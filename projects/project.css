@@ -242,7 +242,7 @@ project-gallery .carousel { margin-top: 0; }
   align-items: baseline;
 }
 
-/* optional ai-usage row, sits in the same meta grid as status/language/source */
+/* ai-usage sits in the meta grid */
 ai-usage { display: contents; }
 
 .ai-usage-cell {

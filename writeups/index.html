@@ -68,7 +68,7 @@
       return d + ' ' + months[m - 1] + ' ' + y
     }
 
-    // pulls the writeup's own opening paragraph as its preview
+    // use the writeup's first paragraph as preview
     function loadExcerpt(slug, el) {
       if (excerpts[slug]) { el.textContent = excerpts[slug]; return }
       fetch(slug + '/')
@@ -85,8 +85,7 @@
         .catch(() => {})
     }
 
-    // looks for <slug>/<slug>.png as the writeup's card icon —
-    // silently does nothing if it's missing, same as the projects listing
+    // looks for <slug>/<slug>.png as card icon, does nothing if missing
     function loadCardIcon(slug, rail) {
       const src = slug + '/' + slug + '.png'
       const img = new Image()

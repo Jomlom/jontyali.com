@@ -1,7 +1,3 @@
-// hero-sim
-
-// galaxy simulation inside the hero section
-
 (function() {
 
 const canvas = document.getElementById('hero-canvas')
@@ -131,7 +127,7 @@ void main(){
   vec3 col=s+b*.78;
   col=col/(col+.44);col=pow(col,vec3(.90));
   float lum=dot(col,vec3(.299,.587,.114));
-  // alpha: galaxy pixels opaque, empty space transparent so bg-stars show through
+  // empty space transparent so bg-stars show through
   col=mix(vec3(lum),col,1.08);
   col=col*mix(vec3(1.0),vec3(0.612,0.439,1.0),0.13);
   float a=clamp(dot(col,vec3(.299,.587,.114))*12.,0.,1.)*u_alpha;
@@ -169,7 +165,7 @@ function resizeTargets(){
 resizeTargets()
 
 // pick body count based on device
-// mobile gets 2048, mid-range gets 4096, strong gpu gets 8192
+// mobile 2048, mid-range 4096, strong gpu 8192
 function pickTier() {
   // touch-primary device = mobile
   if (window.matchMedia('(pointer: coarse)').matches) return { N:2048, TW:64,  TH:32  }
@@ -240,12 +236,12 @@ function makeGalaxy(){
     }
     // blend toward pink then white at centre
     const coreT=Math.max(0,1-rC/0.2)
-    // pink midpoint: shift red up, blue slightly down before going fully white
+    // pink midpoint: more red, a bit less blue
     const pinkR=Math.min(1,cr2*2.4+0.3),pinkG=cg2*0.3,pinkB=cb2*0.85
     cr2=cr2+(pinkR+(1-pinkR)*coreT-cr2)*coreT
     cg2=cg2+(pinkG+(1-pinkG)*coreT-cg2)*coreT
     cb2=cb2+(pinkB+(1-pinkB)*coreT-cb2)*coreT
-    // boost particle size at centre for stronger bloom
+    // bigger particles at centre for bloom
     const coreBoom=1+coreT*3.5
     const bs=(0.82+rSz*.14)*coreBoom;col[i*4]=rSz*coreBoom;col[i*4+1]=Math.max(0,cr2)*bs;col[i*4+2]=Math.max(0,cg2)*bs;col[i*4+3]=Math.max(0,cb2)*bs
   }
@@ -261,7 +257,7 @@ function loadGalaxy(g){
 }
 loadGalaxy(makeGalaxy())
 
-// camera state - exposed globally for bg-stars.js
+// camera state exposed globally for bg-stars.js
 let rotX=0.5,rotY=-1.75,rotVel=0.005
 const ROT_SPEED=0.00006
 window._heroSim = { get rotX(){return rotX}, get rotY(){return rotY}, get fadeAlpha(){return fadeAlpha} }
@@ -299,7 +295,7 @@ function tick(){
   ping=pong
 
   const fov=Math.PI/3.2,asp=w/h
-  // on a narrow screen asp < 1 so galaxy is magnified
+  // narrow screen (asp < 1) magnifies galaxy
   const px=Math.min(w,h)/1080 * Math.max(1, 1/asp)
 
   gl.bindFramebuffer(gl.FRAMEBUFFER,sharpFBO);gl.viewport(0,0,w,h)

@@ -15,17 +15,17 @@ class SiteNav extends HTMLElement {
     const parentKey = Object.keys(NAV_MAP).find(k => NAV_MAP[k].path === parent)
     const pageName = segs.length === 1 && firstKey ? NAV_MAP[firstKey].label : (segs[segs.length - 1] || '')
     const pageCls = firstKey === '1' ? ' cred' : ''
-    const trail = [`<a class="crt-item home" href="/"><span class="label">Jonty</span></a>`]
+    const trail = [`<a class="nav-item home" href="/"><span class="label">Jonty</span></a>`]
     let acc = ''
     segs.forEach((seg, i) => {
       acc += '/' + seg
-      const cls = i === 0 && firstKey === '1' ? 'crt-item cred' : 'crt-item'
+      const cls = i === 0 && firstKey === '1' ? 'nav-item cred' : 'nav-item'
       const label = i === 0 && firstKey ? NAV_MAP[firstKey].label : seg
       trail.push(`<a class="${cls}" href="${acc}/"><span class="label">${label}</span></a>`)
     })
     const keys = Object.keys(NAV_MAP).map(k => {
       const c = (k === '0' ? ' home' : k === '1' ? ' cred' : '') + (k === firstKey ? ' selected' : '')
-      return `<a class="crt-key${c}" href="${NAV_MAP[k].path}">${k}</a>`
+      return `<a class="nav-key${c}" href="${NAV_MAP[k].path}">${k}</a>`
     }).join('')
     this.innerHTML = `
       <nav class="crumb">
@@ -35,8 +35,8 @@ class SiteNav extends HTMLElement {
             <div class="crumb-keys">${keys}</div>
           </div>
           <div class="crumb-hints">
-            <a class="crt-hint show" href="/"><span class="key">[0]</span> home</a>
-            <a class="crt-hint show" href="${parent}"><span class="key">[esc]</span> back</a>
+            <a class="nav-hint show" href="/"><span class="key">[0]</span> home</a>
+            <a class="nav-hint show" href="${parent}"><span class="key">[esc]</span> back</a>
           </div>
           <div class="crumb-mobile">
             <a class="crumb-back" href="${parent}">&larr;</a>
@@ -47,13 +47,13 @@ class SiteNav extends HTMLElement {
     `
     const preview = key => {
       if (!key) return
-      let html = `<a class="crt-item home" href="/"><span class="label">Jonty</span></a>`
+      let html = `<a class="nav-item home" href="/"><span class="label">Jonty</span></a>`
       if (key !== '0') {
-        const cls = key === '1' ? 'crt-item cred' : 'crt-item'
+        const cls = key === '1' ? 'nav-item cred' : 'nav-item'
         html += `<span class="crumb-sep">/</span><a class="${cls}" href="${NAV_MAP[key].path}"><span class="label">${NAV_MAP[key].label}</span></a>`
       }
       this.querySelector('.crumb-trail').innerHTML = html
-      this.querySelectorAll('.crt-key').forEach(el => el.classList.toggle('selected', el.textContent === key))
+      this.querySelectorAll('.nav-key').forEach(el => el.classList.toggle('selected', el.textContent === key))
     }
 
     const go = (key, path) => {
@@ -62,7 +62,7 @@ class SiteNav extends HTMLElement {
       requestAnimationFrame(() => requestAnimationFrame(() => { location.href = path }))
     }
 
-    this.querySelectorAll('.crt-key').forEach(el => el.addEventListener('click', e => { e.preventDefault(); go(el.textContent, el.href) }))
+    this.querySelectorAll('.nav-key').forEach(el => el.addEventListener('click', e => { e.preventDefault(); go(el.textContent, el.href) }))
     const hints = this.querySelectorAll('.crumb-hints a')
     hints[0].addEventListener('click', e => { e.preventDefault(); go('0', hints[0].href) })
     hints[1].addEventListener('click', e => { e.preventDefault(); go(parentKey, hints[1].href) })
@@ -198,8 +198,7 @@ class ProjectIcon extends HTMLElement {
   }
 }
 
-// same idea as ProjectIcon, for writeup article pages — looks for
-// <slug>.png next to the writeup and silently does nothing if it's missing
+// looks for <slug>.png next to writeup and silently does nothing if missing
 class WriteupIcon extends HTMLElement {
   connectedCallback() {
     const name = window.location.pathname.split('/').filter(Boolean).pop()

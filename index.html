@@ -28,44 +28,40 @@ body{
 
 .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:row;justify-content:flex-start;overflow:hidden}
 
-/* CRT panel — floating text, no box */
-.crt-panel{
+.hero-panel{
   position:relative;z-index:2;width:50%;min-width:420px;
   display:flex;flex-direction:column;justify-content:center;
   padding:5rem 5rem;
 }
 
-.crt-panel .crt-name{
-  font-family:var(--font-ui);font-size:clamp(4rem,8vw,8.5rem);line-height:0.9;color:#ffffff;
+.hero-panel .hero-name{
+  font-family:var(--font-ui);font-size:clamp(4rem,2vw,2rem);line-height:0.9;color:#ffffff;
   letter-spacing:0.02em;margin-bottom:1.2rem;opacity:1;animation:none;
   text-shadow:var(--glow-white);
   white-space:nowrap;
 }
-.crt-tag{
+.hero-tag{
   font-family:var(--font-mono);font-size:1.7rem;color:var(--text-muted);
   margin-bottom:3.4rem;letter-spacing:0.03em;
 }
 
-.crt-menu{list-style:none;position:static;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:0.4rem;padding:0;border:0;background:none;backdrop-filter:none}
+.hero-menu{list-style:none;position:static;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:0.4rem;padding:0;border:0;background:none;backdrop-filter:none}
 
-.crt-item .jump{display:none;margin-left:auto;padding-left:1.2rem;font-size:0.85em;opacity:0.6}
+.nav-item .jump{display:none;margin-left:auto;padding-left:1.2rem;font-size:0.85em;opacity:0.6}
 
-/* one clean switch from desktop row -> full vertical layout, no dimmed in-between state */
 @media (max-width:900px){
   body{min-height:100svh}
   .hero{flex-direction:column;justify-content:flex-end;min-height:100svh}
   #hero-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:1}
-  .crt-panel{width:100%;min-width:0;padding:3rem 1.5rem 2.5rem;justify-content:flex-end}
-  .crt-panel .crt-name{font-size:clamp(2.8rem,16vw,6.5rem);white-space:nowrap;margin-bottom:0.3rem}
-  .crt-tag{font-size:1.2rem;margin-bottom:1.4rem}
-  .crt-item{width:100%;font-size:2.1rem}
-  .crt-item .num{display:none}
-  .crt-item .jump{display:inline}
-  .crt-hint{display:none;font-size:0.8rem}
-  body.kbd .crt-hint{display:block;opacity:0.7}
-  body:not(.kbd) .crt-item.selected{background:none;color:var(--purple)}
-  body:not(.kbd) .crt-item.cred.selected{background:none;color:var(--red)}
-  body:not(.kbd) .crt-item.selected .arrow{opacity:0;animation:none}
+  .hero-panel{width:100%;min-width:0;padding:3rem 1.5rem 2.5rem;justify-content:flex-end}
+  .hero-panel .hero-name{font-size:clamp(2.8rem,16vw,6.5rem);white-space:nowrap;margin-bottom:0.3rem}
+  .hero-tag{font-size:1.2rem;margin-bottom:1.4rem}
+  .nav-item{width:100%;font-size:2.1rem}
+  .nav-item .num{display:none}
+  .nav-item .jump{display:inline}
+  body:not(.kbd) .nav-item.selected{background:none;color:var(--purple)}
+  body:not(.kbd) .nav-item.cred.selected{background:none;color:var(--red)}
+  body:not(.kbd) .nav-item.selected .arrow{opacity:0;animation:none}
 }
 </style>
 <script type="application/ld+json">
@@ -96,19 +92,16 @@ body{
 
 <section class="hero">
   <canvas id="hero-canvas"></canvas>
-  <div class="crt-panel">
-    <h1 class="crt-name"><span id="name-text"></span><span id="name-caret" class="name-caret">|</span></h1>
-    <div class="crt-tag">maths &amp; physics, durham</div>
-    <nav class="crt-menu" id="crt-menu">
-      <a class="crt-item cred selected" href="credentials/"><span class="arrow">&gt;</span><span class="label">Credentials</span><span class="num">1</span><span class="jump">&#8599;</span></a>
-      <a class="crt-item" href="projects/"><span class="arrow">&gt;</span><span class="label">Projects</span><span class="num">2</span><span class="jump">&#8599;</span></a>
-      <a class="crt-item" href="writeups/"><span class="arrow">&gt;</span><span class="label">Writeups</span><span class="num">3</span><span class="jump">&#8599;</span></a>
-      <a class="crt-item" href="log/"><span class="arrow">&gt;</span><span class="label">Log</span><span class="num">4</span><span class="jump">&#8599;</span></a>
-      <a class="crt-item" href="communications/"><span class="arrow">&gt;</span><span class="label">Communications</span><span class="num">5</span><span class="jump">&#8599;</span></a>
+  <div class="hero-panel">
+    <h1 class="hero-name"><span id="name-text"></span><span id="name-caret" class="name-caret">|</span></h1>
+    <div class="hero-tag">maths &amp; physics, durham</div>
+    <nav class="hero-menu" id="hero-menu">
+      <a class="nav-item cred selected" href="credentials/"><span class="arrow">&gt;</span><span class="label">Credentials</span><span class="num">1</span><span class="jump">&#8599;</span></a>
+      <a class="nav-item" href="projects/"><span class="arrow">&gt;</span><span class="label">Projects</span><span class="num">2</span><span class="jump">&#8599;</span></a>
+      <a class="nav-item" href="writeups/"><span class="arrow">&gt;</span><span class="label">Writeups</span><span class="num">3</span><span class="jump">&#8599;</span></a>
+      <a class="nav-item" href="log/"><span class="arrow">&gt;</span><span class="label">Log</span><span class="num">4</span><span class="jump">&#8599;</span></a>
+      <a class="nav-item" href="communications/"><span class="arrow">&gt;</span><span class="label">Communications</span><span class="num">5</span><span class="jump">&#8599;</span></a>
     </nav>
-    <div class="crt-hint" id="crt-hint">
-<span class="key">&uarr;&darr;</span> navigate <span class="key">&crarr;</span> select
-    </div>
   </div>
 
 </section>
@@ -117,27 +110,23 @@ body{
 <script src="../bg-stars.js"></script>
 <script>
 
-// ---- type out the name, then drop the caret cleanly (no blink) ----
 (function(){
   const target = 'JONTY ALI'
   const el = document.getElementById('name-text')
   const caret = document.getElementById('name-caret')
-  const hint = document.getElementById('crt-hint')
   let i = 0
   setTimeout(function step(){
     if(i <= target.length){
       el.textContent = target.slice(0, i)
       i++
-      setTimeout(step, 50)
+      setTimeout(step, 20)
     } else {
       caret.classList.add('gone')
-      if(hint) hint.classList.add('show')
     }
-  }, 430)
+  }, 300)
 })();
 
-// ---- menu navigation: arrows + WS + numbers + mouse ----
-const items = Array.from(document.querySelectorAll('.crt-item'))
+const items = Array.from(document.querySelectorAll('.nav-item'))
 let sel = 0
 let kbd = !window.matchMedia('(max-width: 900px)').matches
 function setSel(i){ sel=(i+items.length)%items.length; items.forEach((it,idx)=>it.classList.toggle('selected',idx===sel)) }

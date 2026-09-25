@@ -1,4 +1,4 @@
-// shared puzzle analytics module
+// puzzle analytics
 
 var PuzzleAnalytics = (function () {
   var API_BASE = 'https://api.jontyali.com';

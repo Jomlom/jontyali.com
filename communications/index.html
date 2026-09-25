@@ -328,7 +328,7 @@
       })
     })
 
-    // mobile mode: every channel bar's width should match the email bar
+    // mobile: match channel bars to email bar width
     const mobileModeQuery = window.matchMedia('(max-width: 768px)')
     const emailChannel = document.querySelector('.channel.email')
     const otherChannels = [...document.querySelectorAll('.channel:not(.email)')]

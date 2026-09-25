@@ -93,7 +93,7 @@
   min-width: 0;
 }
 
-/* tags sit bottom-left, the optional pdf link sits bottom-right, same row */
+/* tags bottom-left, optional pdf link bottom-right */
 .wr-tags-row {
   display: flex;
   align-items: center;
@@ -103,7 +103,7 @@
   padding-right: 2rem;
 }
 
-/* optional pdf link, sits at the end of the tags row */
+/* optional pdf link at end of tags row */
 .wr-pdf-mini {
   display: inline-flex;
   align-items: center;
@@ -166,7 +166,7 @@
   padding: 2rem 0;
 }
 
-/* article (reading) pages */
+/* article pages */
 .wr-article { max-width: 720px; margin: 0 auto; padding: 6rem 1.5rem 5rem; }
 
 .wr-article-hero {
@@ -195,7 +195,7 @@
 .wr-article-hero:has(.card-icon) .wr-pdf { margin-left: 0; }
 .wr-article-hero:has(.card-icon) .wr-read::before { content: none; }
 
-/* optional pdf download link, sits at the end of the article-top meta row */
+/* optional pdf link at end of meta row */
 .wr-pdf {
   margin-left: auto;
   display: inline-flex;
@@ -289,7 +289,7 @@ writeup-icon .card-icon {
   color: var(--text);
 }
 
-/* article content blocks */
+/* article content */
 .wr-type-deep { color: var(--purple); background: var(--purple-glow); border-color: var(--purple-border); }
 
 .math {

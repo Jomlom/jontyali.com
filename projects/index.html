@@ -476,7 +476,7 @@
       transitionDuration: '0.2s'
     })
 
-    // read tags from the card itself - single source of truth
+    // read tags from the card itself
     function getCardTags(entry) {
       return [...entry.querySelectorAll('.project-tags span')]
         .map(s => s.textContent.trim().toLowerCase())
@@ -487,8 +487,7 @@
       return el ? el.textContent.trim().toLowerCase() : ''
     }
 
-    // wrap every card title in a title-row (icon added only if one loads),
-    // so the title/description spacing is uniform whether or not there's an icon
+    // wrap card titles in a title-row so spacing is the same with or without an icon
     allProjects.forEach(entry => {
       const card = entry.querySelector('.project-card-lg, .project-card-sm')
       if (!card) return
@@ -518,7 +517,7 @@
     })
     msnry.layout()
 
-    // filtering - reads from the status element directly
+    // filter by status element
     const activeFilters = { status: null }
     let pendingFilter = null
     let filterTimer = null
@@ -543,7 +542,7 @@
         e.classList.remove('is-hidden')
         e.classList.add('fading-out')
       })
-      // fade in appearing cards (remove hidden so they take space but start transparent)
+      // fade in appearing cards, unhide first so they take space
       toShow.forEach(e => {
         if (e.classList.contains('is-hidden')) {
           e.classList.remove('is-hidden')
@@ -567,7 +566,7 @@
       }, 180)
     }
 
-    // compact view - on by default on narrow screens
+    // compact by default on narrow screens
     const compactToggle = document.getElementById('compact-toggle')
     let compact = window.innerWidth < 700
 

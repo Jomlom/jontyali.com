@@ -1,12 +1,3 @@
-// bg-stars
-
-// fixed fullscreen canvas
-// draws background stars everywhere on the page
-// reads rotX and rotY from window._heroSim so stars match the hero exactly
-// on pages without hero-sim, rotates slowly on its own
-//
-// also owns the site-wide pause button: it's the one script guaranteed to
-
 (function () {
 
   const canvas = document.getElementById('bg-stars-canvas')
@@ -49,10 +40,10 @@
   }
   genStars()
 
-  // re-randomise the star field when the hero galaxy is reset (reset button)
+  // re-randomise on reset button
   window.addEventListener('heroReset', genStars)
 
-  // autonomous rotation used on pages without hero-sim
+  // rotation on pages without hero-sim
   const AUTO_ROT_X = 0.25
   let autoRotY = -0.75
   const AUTO_ROT_SPEED = 0.00006
@@ -65,18 +56,17 @@
     const w = canvas.width, h = canvas.height
     const px = Math.max(Math.min(w, h) / 1080, 0.9)
 
-    // hero-sim sizes its canvas to the hero section width x height
-    // project stars using the HERO canvas aspect ratio so they match
+    // hero-sim sizes canvas to hero section width x height
     const heroCanvas = document.getElementById('hero-canvas')
     const heroAsp = heroCanvas ? (heroCanvas.width / heroCanvas.height) : Math.max(w / h, 1.3)
 
-    // read camera from hero-sim — falls back to 0 if not loaded yet
+    // read camera from hero-sim
     let rotX, rotY
     if (window._heroSim) {
       rotX = window._heroSim.rotX
       rotY = window._heroSim.rotY
     } else {
-      // no hero sim - rotate slowly on own
+      // when no hero sim, rotate slowly on own
       autoRotY += AUTO_ROT_SPEED
       rotX = AUTO_ROT_X
       rotY = autoRotY
@@ -85,12 +75,12 @@
     // fade stars out/in together with the hero galaxy while it resets
     const sfAlpha = (window._heroSim && typeof window._heroSim.fadeAlpha === 'number') ? window._heroSim.fadeAlpha : 1
 
-    // projection witj same fov as hero-sim
+    // projection with same fov as hero-sim
     const fov = Math.PI / 3.2
-    const asp = heroAsp  // match hero-sim projection exactly
+    const asp = heroAsp
     const f = 1 / Math.tan(fov / 2)
 
-    // rotation matrix components, rotY then rotX
+    // rotation matrix components
     const cx = Math.cos(rotX), sx = Math.sin(rotX)
     const cy = Math.cos(rotY), sy = Math.sin(rotY)
 

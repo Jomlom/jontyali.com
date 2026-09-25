@@ -148,7 +148,7 @@
         let lastMonth = null
 
         entries.forEach(entry => {
-          // insert month divider when month changes
+          // month divider when month changes
           if (entry.month !== lastMonth) {
             const div = document.createElement('div')
             div.className = 'log-divider'
@@ -179,7 +179,7 @@
           wrap.appendChild(meta)
           feed.appendChild(wrap)
 
-          // inject icon if provided and loads successfully
+          // add icon if it loads
           if (entry.icon) {
             const img = new Image()
             img.onload = () => {
