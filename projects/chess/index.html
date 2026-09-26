@@ -3,63 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Chess Platform & Engine - Jonty Ali" />
-  <meta property="og:description" content="Jonty Ali's chess platform and engine, a C++ project where he teaches himself the language while aiming for a bot that plays around 1600 ELO." />
-  <meta property="og:url" content="https://jontyali.com/projects/chess/" />
-  <link rel="canonical" href="https://jontyali.com/projects/chess/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chess Platform & Engine - Jonty Ali" />
-  <meta name="twitter:description" content="Jonty Ali's chess platform and engine, a C++ project where he teaches himself the language while aiming for a bot that plays around 1600 ELO." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="Jonty Ali's chess platform and engine, a C++ project where he teaches himself the language while aiming for a bot that plays around 1600 ELO." />
+
+  <!-- search results and browser -->
   <title>Chess Platform & Engine - Jonty Ali</title>
+  <meta name="description" content="Jonty Ali's chess platform and engine, a C++ project where he teaches himself the language while aiming for a bot that plays around 1600 ELO.">
+  <link rel="canonical" href="https://jontyali.com/projects/chess/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chess Platform & Engine - Jonty Ali">
+  <meta property="og:description" content="Jonty Ali's chess platform and engine, a C++ project where he teaches himself the language while aiming for a bot that plays around 1600 ELO.">
+  <meta property="og:url" content="https://jontyali.com/projects/chess/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Chess Platform & Engine - Jonty Ali",
+    "url": "https://jontyali.com/projects/chess/",
+    "description": "Jonty Ali's chess platform and engine, a C++ project where he teaches himself the language while aiming for a bot that plays around 1600 ELO.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../project.css">
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/projects/">&larr; Projects</a>
+      <h1 class="panel-title"><img src="chess.png" alt="">Chess Platform &amp; Engine</h1>
+      <p class="panel-lead">A chess platform and engine written in C++, where I build bots of increasing difficulty while teaching myself the language (and chess). Goal: create a bot around 1600 ELO.</p>
 
-  <main class="project-overview">
-    <div class="project-left">
-      <div class="project-status">in progress</div>
-      <div class="project-title">
-        <project-icon></project-icon>
-        <h1>Chess Platform & Engine</h1>
+      <div class="panel-box">
+        <div class="panel-row compact"><span class="label">Source</span><span class="meta">private</span></div>
+        <div class="panel-row compact" data-status="in progress"><span class="label">Status</span><span class="meta">in progress</span></div>
+        <div class="panel-row compact"><span class="label">Language</span><span class="meta">C++</span></div>
       </div>
-      <p class="project-desc">
-        A chess platform and engine written in C++, where I build bots of increasing difficulty
-        while teaching myself the language (and chess). Goal: create a bot around 1600 ELO.
-      </p>
-    </div>
-    <div class="project-right">
-      <project-gallery></project-gallery>
-      <div class="project-info">
-        <span class="info-label">STATUS:</span><span class="info-value">in progress</span>
-        <span class="info-label">LANGUAGE:</span><span class="info-value">C++</span>
-        <span class="info-label">SOURCE:</span><span class="info-value">private</span>
-        <ai-usage level="none" desc="
-        This serves as my 
-        first real project learning C++, 
-        so I am specifically avoiding AI use 
-        to ensure no gaps in my skills or understanding 
-        of the language.
-        "></ai-usage>
+      <div class="ai-note" tabindex="0"><span class="ai-label">No AI usage</span>
+        <span class="ai-pop" role="tooltip"><b>NONE</b>This serves as my first real project learning C++, so I am specifically avoiding AI use to ensure no gaps in my skills or understanding of the language.</span>
       </div>
     </div>
-  </main>
+  </section>
 
-  <site-footer></site-footer>
-
-<script src="../../bg-stars.js"></script>
-<script src="../../components.js"></script>
+  <script src="../../hero-sim.js"></script>
+  <script src="../../bg-stars.js"></script>
 
 </body>
 </html>

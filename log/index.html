@@ -3,201 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Log - Jonty Ali" />
-  <meta property="og:description" content="An occasional feed where Jonty Ali notes when he starts something new, finishes something, or does anything interesting. Contact: contact@jontyali.com." />
-  <meta property="og:url" content="https://jontyali.com/log/" />
-  <link rel="canonical" href="https://jontyali.com/log/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Log - Jonty Ali" />
-  <meta name="twitter:description" content="An occasional feed where Jonty Ali notes when he starts something new, finishes something, or does anything interesting. Contact: contact@jontyali.com." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="An occasional feed where Jonty Ali notes when he starts something new, finishes something, or does anything interesting. Contact: contact@jontyali.com." />
+
+  <!-- search results and browser -->
   <title>Log - Jonty Ali</title>
+  <meta name="description" content="Jonty Ali's log.">
+  <link rel="canonical" href="https://jontyali.com/log/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Log - Jonty Ali">
+  <meta property="og:description" content="Jonty Ali's log.">
+  <meta property="og:url" content="https://jontyali.com/log/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Log - Jonty Ali",
+    "url": "https://jontyali.com/log/",
+    "description": "Jonty Ali's log.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <style>
-    .log-bubble a {
-      color: var(--purple);
-      text-decoration: underline;
-      text-decoration-color: var(--purple-border);
-      text-underline-offset: 0.15em;
-      transition: color 0.15s, text-decoration-color 0.15s;
-    }
-    .log-bubble a:hover {
-      color: #b388ff;
-      text-decoration-color: currentColor;
-    }
-
-    .log-desc {
-      font-size: 1.32rem;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .log-feed {
-      max-width: 640px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin: 0 auto;
-    }
-
-    .log-entry {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .log-bubble {
-      background: var(--bg2);
-      border: 1px solid var(--purple-border);
-      border-radius: 16px;
-      padding: 0.9rem 1.2rem;
-      width: 100%;
-      color: var(--text);
-      font-size: 1.4rem;
-      line-height: 1.3;
-    }
-
-    .log-bubble p {
-      margin: 0;
-    }
-
-    .log-bubble-inner {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
-    }
-
-    .log-icon {
-      width: 2.75rem;
-      height: 2.75rem;
-      object-fit: contain;
-      flex: 0 0 2.75rem;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-      margin-top: 0.1rem;
-    }
-
-    .log-meta {
-      display: flex;
-      align-items: center;
-      margin-top: 0.3rem;
-      align-self: flex-end;
-      padding-right: 0.25rem;
-    }
-
-    .log-date {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-    }
-
-    .log-divider {
-      text-align: center;
-      font-size: 1.15rem;
-      color: var(--text-dim);
-      letter-spacing: 0.1em;
-      margin: 1rem 0 0.25rem;
-      position: relative;
-    }
-
-    .log-divider::before,
-    .log-divider::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 30%;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .log-divider::before { left: 0; }
-    .log-divider::after { right: 0; }
+    @media (min-width: 901px) { .hero-panel { width: 60%; } }
+    .chat { width: 56rem; display: flex; flex-direction: column-reverse; gap: 1rem; height: min(32rem, calc(100vh - 26rem)); max-height: none; padding: 1.2rem; }
+    .day { align-self: center; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+    .msg { display: flex; align-items: flex-end; gap: 0.8rem; animation: msg-in 0.35s ease-out both; animation-delay: calc(var(--i) * 0.2s + 0.3s); }
+    .pfp { width: 3rem; height: 3rem; flex: 0 0 3rem; border-radius: 50% !important; object-fit: cover; }
+    .bubble { position: relative; display: flex; align-items: flex-start; gap: 0.8rem; max-width: calc(100% - 4rem); padding: 0.8rem 1rem; background: rgba(156, 112, 255, 0.08); border: 1px solid var(--purple-border); }
+    .bubble::before { content: ''; position: absolute; left: -7px; bottom: 10px; border: 6px solid transparent; border-left: 0; border-right-color: var(--purple-border); }
+    .bubble p { margin-bottom: 0.4rem; font-size: 1.4rem; line-height: 1.5; color: var(--text); }
+    .bubble a { color: var(--purple); }
+    .bubble .icon { width: 2.4rem; height: 2.4rem; flex: 0 0 2.4rem; object-fit: contain; image-rendering: pixelated; }
+    .time { font-size: 1.1rem; color: var(--text-dim); }
+    @keyframes msg-in { from { opacity: 0; transform: translateY(10px); } }
+    @media (prefers-reduced-motion: reduce) { .msg { animation: none; } }
   </style>
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/">&larr; Jonty Ali</a>
+      <h1 class="panel-title">Log</h1>
+      <p class="panel-lead">I occasionally send a "log" when something interesting happens.</p>
 
-  <main class="page-main">
-    <section class="section">
-      <p class="log-desc">I occasionally log when I start something new, finish something, or do anything interesting.</p>
-      <div class="log-feed" id="log-feed"></div>
-    </section>
-  </main>
+      <div class="panel-box panel-scroll chat">
+        <div class="msg" style="--i:2">
+          <img class="pfp" src="../images/profile-photo.webp" alt="Jonty">
+          <div class="bubble">
+            <img class="icon" src="eclipse.png" alt="">
+            <div>
+              <p>Yesterday's solar eclipse over the UK was a good one. Wrote up some photos, the pinhole effect, and a few anecdotes from watching it <a href="/writeups/eclipse/">here</a>.</p>
+              <span class="time">13 Aug 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="day">August 2026</div>
+        <div class="msg" style="--i:1">
+          <img class="pfp" src="../images/profile-photo.webp" alt="Jonty">
+          <div class="bubble">
+            <img class="icon" src="imperial.png" alt="">
+            <div>
+              <p>Finished my two weeks of maths summer school at Imperial College London. Covered two modules, read about it <a href="/writeups/imperial/">here</a>.</p>
+              <span class="time">12 Jul 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="day">July 2026</div>
+        <div class="msg" style="--i:0">
+          <img class="pfp" src="../images/profile-photo.webp" alt="Jonty">
+          <div class="bubble">
+            <div>
+              <p>Added this new feature to my site! I can now log any cool things I do here as a small ledger of my progress or achievements.</p>
+              <span class="time">21 Jun 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="day">June 2026</div>
+      </div>
+    </div>
+  </section>
 
-  <site-footer></site-footer>
-
+  <script src="../hero-sim.js"></script>
   <script src="../bg-stars.js"></script>
-  <script src="../components.js"></script>
-  <script>
-    fetch('entries.json')
-      .then(r => r.json())
-      .then(entries => {
-        const feed = document.getElementById('log-feed')
-        let lastMonth = null
-
-        entries.forEach(entry => {
-          // month divider when month changes
-          if (entry.month !== lastMonth) {
-            const div = document.createElement('div')
-            div.className = 'log-divider'
-            div.textContent = entry.month
-            feed.appendChild(div)
-            lastMonth = entry.month
-          }
-
-          // build entry
-          const wrap = document.createElement('div')
-          wrap.className = 'log-entry'
-
-          const bubble = document.createElement('div')
-          bubble.className = 'log-bubble'
-
-          const p = document.createElement('p')
-          p.innerHTML = entry.text
-          bubble.appendChild(p)
-
-          const meta = document.createElement('div')
-          meta.className = 'log-meta'
-          const date = document.createElement('span')
-          date.className = 'log-date'
-          date.textContent = entry.date
-          meta.appendChild(date)
-
-          wrap.appendChild(bubble)
-          wrap.appendChild(meta)
-          feed.appendChild(wrap)
-
-          // add icon if it loads
-          if (entry.icon) {
-            const img = new Image()
-            img.onload = () => {
-              img.className = 'log-icon'
-              img.alt = ''
-              img.setAttribute('aria-hidden', 'true')
-              const inner = document.createElement('div')
-              inner.className = 'log-bubble-inner'
-              inner.appendChild(img)
-              while (bubble.firstChild) inner.appendChild(bubble.firstChild)
-              bubble.appendChild(inner)
-            }
-            img.onerror = () => {}
-            img.src = entry.icon
-          }
-        })
-      })
-  </script>
 
 </body>
 </html>

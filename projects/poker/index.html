@@ -3,56 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Poker Platform & Bots - Jonty Ali" />
-  <meta property="og:description" content="Jonty Ali's planned poker platform and bots, a C++ project for Texas Hold'em opponents of varying sophistication." />
-  <meta property="og:url" content="https://jontyali.com/projects/poker/" />
-  <link rel="canonical" href="https://jontyali.com/projects/poker/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Poker Platform & Bots - Jonty Ali" />
-  <meta name="twitter:description" content="Jonty Ali's planned poker platform and bots, a C++ project for Texas Hold'em opponents of varying sophistication." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="Jonty Ali's planned poker platform and bots, a C++ project for Texas Hold'em opponents of varying sophistication." />
+
+  <!-- search results and browser -->
   <title>Poker Platform & Bots - Jonty Ali</title>
+  <meta name="description" content="Jonty Ali's planned poker platform and bots, a C++ project for Texas Hold'em opponents of varying sophistication.">
+  <link rel="canonical" href="https://jontyali.com/projects/poker/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Poker Platform & Bots - Jonty Ali">
+  <meta property="og:description" content="Jonty Ali's planned poker platform and bots, a C++ project for Texas Hold'em opponents of varying sophistication.">
+  <meta property="og:url" content="https://jontyali.com/projects/poker/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Poker Platform & Bots - Jonty Ali",
+    "url": "https://jontyali.com/projects/poker/",
+    "description": "Jonty Ali's planned poker platform and bots, a C++ project for Texas Hold'em opponents of varying sophistication.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../project.css">
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/projects/">&larr; Projects</a>
+      <h1 class="panel-title"><img src="poker.png" alt="">Poker Platform &amp; Bots</h1>
+      <p class="panel-lead">A Texas Hold'em platform with bots of varying sophistication. Poker's high variance makes it hard to benchmark, but I'd like an engine that can fool me and my friends.</p>
 
-  <main class="project-overview">
-    <div class="project-left">
-      <div class="project-status">idea</div>
-      <div class="project-title">
-        <project-icon></project-icon>
-        <h1>Poker Platform & Bots</h1>
-      </div>
-      <p class="project-desc">
-        A Texas Hold'em platform with bots of varying sophistication. Poker's high variance
-        makes it hard to benchmark, but I'd like an engine that can fool me and my friends.
-      </p>
-    </div>
-    <div class="project-right">
-      <project-gallery></project-gallery>
-      <div class="project-info">
-        <span class="info-label">STATUS:</span><span class="info-value">idea</span>
-        <span class="info-label">LANGUAGE:</span><span class="info-value">C++</span>
-        <span class="info-label">SOURCE:</span><span class="info-value">private</span>
+      <div class="panel-box">
+        <div class="panel-row compact"><span class="label">Source</span><span class="meta">private</span></div>
+        <div class="panel-row compact" data-status="idea"><span class="label">Status</span><span class="meta">idea</span></div>
+        <div class="panel-row compact"><span class="label">Language</span><span class="meta">C++</span></div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <site-footer></site-footer>
-
-<script src="../../bg-stars.js"></script>
-<script src="../../components.js"></script>
+  <script src="../../hero-sim.js"></script>
+  <script src="../../bg-stars.js"></script>
 
 </body>
 </html>

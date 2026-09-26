@@ -3,64 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="This Website - Jonty Ali" />
-  <meta property="og:description" content="The story behind this website, Jonty Ali's personal site for showing off the things he makes." />
-  <meta property="og:url" content="https://jontyali.com/projects/site/" />
-  <link rel="canonical" href="https://jontyali.com/projects/site/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="This Website - Jonty Ali" />
-  <meta name="twitter:description" content="The story behind this website, Jonty Ali's personal site for showing off the things he makes." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="The story behind this website, Jonty Ali's personal site for showing off the things he makes." />
+
+  <!-- search results and browser -->
   <title>This Website - Jonty Ali</title>
+  <meta name="description" content="The story behind this website, Jonty Ali's personal site for showing off the things he makes.">
+  <link rel="canonical" href="https://jontyali.com/projects/site/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="This Website - Jonty Ali">
+  <meta property="og:description" content="The story behind this website, Jonty Ali's personal site for showing off the things he makes.">
+  <meta property="og:url" content="https://jontyali.com/projects/site/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "This Website - Jonty Ali",
+    "url": "https://jontyali.com/projects/site/",
+    "description": "The story behind this website, Jonty Ali's personal site for showing off the things he makes.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../project.css">
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
-
-  <main class="project-overview">
-    <div class="project-left">
-      <div class="project-status">live</div>
-      <div class="project-title">
-        <project-icon></project-icon>
-        <h1>This Website</h1>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/projects/">&larr; Projects</a>
+      <div class="panel-head">
+        <h1 class="panel-title">This Website</h1>
+        <a class="panel-button" href="/">To the front page</a>
       </div>
-      <p class="project-desc">
-        This is the website you are currently on.
-        A personal site to showcase some of
-        the things I do.
-      </p>
-      <a class="project-cta" href="/">to the front page</a>
-    </div>
-    <div class="project-right">
-      <project-gallery></project-gallery>
-      <div class="project-info">
-        <span class="info-label">STATUS:</span><span class="info-value">live</span>
-        <span class="info-label">LANGUAGE:</span><span class="info-value">HTML</span>
-        <span class="info-label">SOURCE:</span><span class="info-value"><a href="https://github.com/Jomlom/jomlom.github.io" target="_blank" rel="noopener">github</a></span>
-        <ai-usage level="high" desc="
-        I wanted a place to tie together various 
-        projects and show off the things I make. 
-        I do not have significant interest in HTML, CSS, or JS, 
-        so I use AI significantly to help me build and maintain it.
-        "></ai-usage>
+      <p class="panel-lead">This is the website you are currently on. A personal site to showcase some of the things I do.</p>
+
+      <div class="panel-box">
+        <a class="panel-row compact" href="https://github.com/Jomlom/jomlom.github.io" target="_blank" rel="noopener"><span class="label">Source</span><span class="meta">github</span></a>
+        <div class="panel-row compact" data-status="live"><span class="label">Status</span><span class="meta">live</span></div>
+        <div class="panel-row compact"><span class="label">Language</span><span class="meta">HTML</span></div>
+      </div>
+      <div class="ai-note" tabindex="0"><span class="ai-label">AI usage</span>
+        <span class="ai-pop" role="tooltip"><b>HEAVY</b>I wanted a place to tie together various projects and show off the things I make. I do not have significant interest in HTML, CSS, or JS, so I use AI significantly to help me build and maintain it.</span>
       </div>
     </div>
-  </main>
+    <div class="hero-side">
+      <div class="side-gallery">
+        <a href="gallery/1.png" target="_blank" rel="noopener"><img src="gallery/1.png" alt="This Website screenshot 1"></a>
+      </div>
+    </div>
+  </section>
 
-  <site-footer></site-footer>
-
-<script src="../../bg-stars.js"></script>
-<script src="../../components.js"></script>
+  <script src="../../hero-sim.js"></script>
+  <script src="../../bg-stars.js"></script>
 
 </body>
 </html>

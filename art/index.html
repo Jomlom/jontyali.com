@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- search results and browser -->
-  <title>Art &middot; Jonty Ali</title>
+  <title>Art - Jonty Ali</title>
   <meta name="description" content="Jonty Ali's art.">
   <link rel="canonical" href="https://jontyali.com/art/">
 
   <!-- link previews -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Art &middot; Jonty Ali">
+  <meta property="og:title" content="Art - Jonty Ali">
   <meta property="og:description" content="Jonty Ali's art.">
   <meta property="og:url" content="https://jontyali.com/art/">
   <meta property="og:image" content="https://jontyali.com/favicon.png">
@@ -22,7 +22,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Art · Jonty Ali",
+    "name": "Art - Jonty Ali",
     "url": "https://jontyali.com/art/",
     "description": "Jonty Ali's art.",
     "author": {
@@ -51,16 +51,18 @@
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/">&larr; Jonty Ali</a>
+      <h1 class="panel-title">Art</h1>
+      <p class="panel-lead">this is my art page, work in progress while i revamp my site!</p>
+    </div>
+  </section>
 
-  <main class="wip">this is my art page, work in progress while i revamp my site!</main>
-
-  <site-footer></site-footer>
-
+  <script src="../hero-sim.js"></script>
   <script src="../bg-stars.js"></script>
-  <script src="../components.js"></script>
 
 </body>
 </html>

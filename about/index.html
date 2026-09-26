@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- search results and browser -->
-  <title>About &middot; Jonty Ali</title>
-  <meta name="description" content="Jonty Ali's about.">
+  <title>About - Jonty Ali</title>
+  <meta name="description" content="About Jonty Ali.">
   <link rel="canonical" href="https://jontyali.com/about/">
 
   <!-- link previews -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="About &middot; Jonty Ali">
-  <meta property="og:description" content="Jonty Ali's about.">
+  <meta property="og:title" content="About - Jonty Ali">
+  <meta property="og:description" content="About Jonty Ali.">
   <meta property="og:url" content="https://jontyali.com/about/">
   <meta property="og:image" content="https://jontyali.com/favicon.png">
   <meta name="twitter:card" content="summary">
@@ -22,9 +22,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "About · Jonty Ali",
+    "name": "About - Jonty Ali",
     "url": "https://jontyali.com/about/",
-    "description": "Jonty Ali's about.",
+    "description": "About Jonty Ali.",
     "author": {
       "@type": "Person",
       "name": "Jonty Ali",
@@ -51,16 +51,18 @@
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/">&larr; Jonty Ali</a>
+      <h1 class="panel-title">About</h1>
+      <p class="panel-lead">this is my about page, work in progress while i revamp my site!</p>
+    </div>
+  </section>
 
-  <main class="wip">this is my about page, work in progress while i revamp my site!</main>
-
-  <site-footer></site-footer>
-
+  <script src="../hero-sim.js"></script>
   <script src="../bg-stars.js"></script>
-  <script src="../components.js"></script>
 
 </body>
 </html>

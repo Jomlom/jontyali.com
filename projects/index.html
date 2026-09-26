@@ -3,611 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Projects - Jonty Ali" />
-  <meta property="og:description" content="Everything Jonty Ali is building, from live projects and works in progress to ideas he still wants to try, filterable by status. Contact: contact@jontyali.com." />
-  <meta property="og:url" content="https://jontyali.com/projects/" />
-  <link rel="canonical" href="https://jontyali.com/projects/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Projects - Jonty Ali" />
-  <meta name="twitter:description" content="Everything Jonty Ali is building, from live projects and works in progress to ideas he still wants to try, filterable by status. Contact: contact@jontyali.com." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="Everything Jonty Ali is building, from live projects and works in progress to ideas he still wants to try, filterable by status. Contact: contact@jontyali.com." />
+
+  <!-- search results and browser -->
   <title>Projects - Jonty Ali</title>
+  <meta name="description" content="Jonty Ali's projects.">
+  <link rel="canonical" href="https://jontyali.com/projects/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects - Jonty Ali">
+  <meta property="og:description" content="Jonty Ali's projects.">
+  <meta property="og:url" content="https://jontyali.com/projects/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Projects - Jonty Ali",
+    "url": "https://jontyali.com/projects/",
+    "description": "Jonty Ali's projects.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
-
-  <style>
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 3rem;
-      align-items: flex-start;
-    }
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .filter-group-label {
-      font-size: 0.65rem;
-      color: var(--text-dim);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .filter-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-    .filter-pill {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      padding: 0.25rem 0.7rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--text-muted);
-      background: transparent;
-      cursor: pointer;
-      transition: color 0.15s, border-color 0.15s, background 0.15s;
-    }
-    .filter-pill:hover {
-      color: var(--text);
-      border-color: rgba(255,255,255,0.15);
-    }
-    .filter-pill.active {
-      color: var(--purple);
-      border-color: var(--purple-border);
-      background: var(--purple-glow);
-    }
-
-    .projects-wrap { position: relative; }
-
-    .projects-wrap-sizer { width: calc(33.333% - 14px); }
-
-    .project-entry {
-      width: calc(33.333% - 14px);
-      margin-bottom: 1.25rem;
-    }
-
-    @media (max-width: 1000px) {
-      .projects-wrap-sizer,
-      .project-entry { width: calc(50% - 10px); }
-    }
-    @media (max-width: 768px) {
-      .projects-wrap-sizer,
-      .project-entry { width: 100%; }
-      .filter-bar { flex-direction: column; gap: 1.25rem; align-items: stretch; margin-bottom: 2rem; }
-      .view-toggle { margin-left: 0; align-self: flex-start; }
-    }
-
-    /* compact view - hide descriptions */
-    .compact .project-card-lg p,
-    .compact .project-card-sm p { display: none; }
-    .compact .project-card-lg { padding: 1.25rem; }
-    .compact .project-card-sm { padding: 1rem 1.25rem; }
-    .compact .project-card-lg .card-title-row { margin-bottom: 0.6rem; }
-    .compact .project-card-sm .card-title-row { margin-bottom: 0.5rem; }
-    .compact .project-card-lg .card-icon { width: 3rem; height: 3rem; flex: 0 0 3rem; }
-    .compact .project-card-lg h3 { font-size: 1.1rem; }
-    .compact .project-tags span:not(:first-child) { display: none; }
-
-    /* compact toggle button */
-    .view-toggle {
-      margin-left: auto;
-      align-self: flex-end;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      padding: 0.25rem 0.7rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--text-muted);
-      background: transparent;
-      cursor: pointer;
-      transition: color 0.15s, border-color 0.15s, background 0.15s;
-      white-space: nowrap;
-    }
-    .view-toggle:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
-    .view-toggle.active {
-      color: var(--purple);
-      border-color: var(--purple-border);
-      background: var(--purple-glow);
-    }
-    .view-toggle .toggle-track {
-      width: 24px;
-      height: 13px;
-      border-radius: 7px;
-      background: var(--border);
-      position: relative;
-      transition: background 0.15s;
-      flex-shrink: 0;
-    }
-    .view-toggle.active .toggle-track { background: var(--purple); }
-    .view-toggle .toggle-thumb {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--text-muted);
-      transition: left 0.15s, background 0.15s;
-    }
-    .view-toggle.active .toggle-thumb { left: 13px; background: #fff; }
-
-    .project-card-lg {
-      position: relative;
-      padding: 2rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg2);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .project-card-lg:hover {
-      border-color: var(--purple-border);
-      background: var(--bg3);
-    }
-    .project-card-lg .card-title-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.35rem;
-    }
-    .project-card-lg .card-icon {
-      width: 4.5rem;
-      height: 4.5rem;
-      object-fit: contain;
-      flex: 0 0 4.5rem;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-    .project-card-lg h3 {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 0;
-    }
-    .project-card-lg p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-    }
-    .project-card-lg .project-tags { margin-top: auto; }
-    .project-card-lg .card-arrow {
-      position: absolute;
-      bottom: 1.25rem;
-      right: 1.25rem;
-      color: var(--purple-dim);
-      font-size: 0.9rem;
-      opacity: 0;
-      transform: translateX(-4px);
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .project-card-lg:hover .card-arrow { opacity: 1; transform: translateX(0); }
-
-    .project-card-sm {
-      position: relative;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg2);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      opacity: 0.65;
-      transition: border-color 0.25s, background 0.25s, opacity 0.2s;
-    }
-    a.project-card-sm:hover {
-      border-color: var(--purple-border);
-      background: var(--bg3);
-      opacity: 1;
-    }
-    a.project-card-sm:hover .card-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .project-card-sm .card-title-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.05rem;
-    }
-    .project-card-sm .card-icon {
-      width: 3rem;
-      height: 3rem;
-      object-fit: contain;
-      flex: 0 0 3rem;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-    .project-card-sm h3 {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 0;
-    }
-    .project-card-sm p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    .project-card-sm .project-tags { margin-top: auto; }
-  </style>
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/">&larr; Jonty Ali</a>
+      <h1 class="panel-title">Projects</h1>
 
-  <main class="page-main">
-    <section class="section">
-      <div class="filter-bar">
-        <div class="filter-group">
-          <div class="filter-group-label">Status</div>
-          <div class="filter-pills" id="filter-status">
-            <button class="filter-pill" data-filter="in progress">In Progress</button>
-            <button class="filter-pill" data-filter="idea">Idea</button>
-            <button class="filter-pill" data-filter="live">Live</button>
-          </div>
-        </div>
-        <button class="view-toggle" id="compact-toggle" aria-label="toggle compact view">
-          <span class="toggle-track"><span class="toggle-thumb"></span></span>
-          Compact mode
-        </button>
+      <div class="panel-box panel-scroll">
+        <a class="panel-row" href="puzzles/" data-status="live"><img class="icon" src="puzzles/puzzles.png" alt=""><span class="label">Puzzles</span><span class="meta">live</span></a>
+        <a class="panel-row" href="mcmods/" data-status="live"><span class="label">Minecraft Mods</span><span class="meta">live</span></a>
+        <a class="panel-row" href="site/" data-status="live"><span class="label">This Website!</span><span class="meta">live</span></a>
+        <a class="panel-row" href="nbody/" data-status="live"><img class="icon" src="nbody/nbody.png" alt=""><span class="label">N-Body Gravity Simulator</span><span class="meta">live</span></a>
+        <a class="panel-row" href="chess/" data-status="in progress"><img class="icon" src="chess/chess.png" alt=""><span class="label">Chess Platform &amp; Engine</span><span class="meta">in progress</span></a>
+        <a class="panel-row" href="itm/" data-status="in progress"><img class="icon" src="itm/itm.png" alt=""><span class="label">Into The Maze</span><span class="meta">in progress</span></a>
+        <a class="panel-row" href="poker/" data-status="idea"><img class="icon" src="poker/poker.png" alt=""><span class="label">Poker Platform &amp; Bots</span><span class="meta">idea</span></a>
+        <div class="panel-row" data-status="idea"><span class="label">Fluid Simulation</span><span class="meta">idea</span></div>
+        <div class="panel-row" data-status="idea"><span class="label">Ray Tracer</span><span class="meta">idea</span></div>
       </div>
+    </div>
+  </section>
 
-      <div class="projects-wrap" id="projects-wrap">
-        <div class="projects-wrap-sizer"></div>
-
-        <!-- to feature a card, replace its status div with:
-        <div>
-          <span class="project-tag-featured">featured</span><span class="project-status">live</span>
-        </div>
-        -->
-
-        <div class="project-entry" data-folder="puzzles">
-          <a class="project-card-lg" href="puzzles/">
-            <div>
-              <span class="project-tag-featured">featured</span><span class="project-status">live</span>
-            </div>
-            <h3>Puzzles</h3>
-            <p>
-              A few original problem solving questions/puzzles I've written
-              with hints and solutions, several are technical interview
-              style questions with logical reasoning and or some maths.
-              I have publicised some of these online which you can try,
-              and add new ones occasionally.
-            </p>
-            <div class="project-tags">
-              <span>Problem Solving</span>
-              <span>Maths</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="project-entry" data-folder="chess">
-          <a class="project-card-lg" href="chess/">
-            <div class="project-status">in progress</div>
-            <h3>Chess Platform & Engine</h3>
-            <p>
-              A chess platform and engine written in C++, where I build bots of increasing difficulty
-              while teaching myself the language (and chess). Goal: create a bot around 1600 ELO.
-            </p>
-            <div class="project-tags">
-              <span>C++</span>
-              <span>Problem Solving</span>
-              <span>Game Theory</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="project-entry" data-folder="itm">
-          <a class="project-card-lg" href="itm/">
-            <div class="project-status">in progress</div>
-            <h3>Into The Maze</h3>
-            <p>
-              An indie game dev organisation with me and a friend, actively developing
-              a playable demo for a game in Godot.
-            </p>
-            <div class="project-tags">
-              <span>Godot</span>
-              <span>Game Dev</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="project-entry" data-folder="mcmods">
-          <a class="project-card-lg" href="mcmods/">
-            <div class="project-status">live</div>
-            <h3>Minecraft Mods</h3>
-            <p>A small collection of Minecraft mods I have
-              released online and actively maintain,
-              mainly for fun.
-              Personally at 400k downloads.
-              Part of a small organisation with over 130M
-              total downloads.</p>
-            <div class="project-tags">
-              <span>Java</span>
-              <span>Game Dev</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="project-entry" data-folder="nbody">
-          <a class="project-card-lg" href="nbody/">
-            <div class="project-status">live</div>
-            <h3>N-Body Gravity Simulator</h3>
-            <p>
-              A real-time gravitational simulation of many
-              bodies using Newtonian gravitation.
-              A simple and beautiful visualisation,
-              mainly done to showcase on the front page
-              of this site.
-            </p>
-            <div class="project-tags">
-              <span>JavaScript</span>
-              <span>Maths</span>
-              <span>Physics Sim</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="project-entry" data-folder="site">
-          <a class="project-card-lg" href="site/">
-            <div class="project-status">live</div>
-            <h3>This Website!</h3>
-            <p>
-              This is the website you are currently on.
-              A personal site to showcase some of
-              the things I do.
-            </p>
-            <div class="project-tags">
-              <span>HTML</span>
-              <span>JavaScript</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="project-entry" data-folder="poker">
-          <a class="project-card-sm" href="poker/">
-            <div class="project-status">idea</div>
-            <h3>Poker Platform & Bots</h3>
-            <p>
-              A Texas Hold'em platform with bots of varying sophistication. Poker's high variance
-              makes it hard to benchmark, but I'd like an engine that can fool me and my friends.
-            </p>
-            <div class="project-tags">
-              <span>C++</span>
-              <span>Problem Solving</span>
-              <span>Game Theory</span>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="project-entry" data-folder="">
-          <div class="project-card-sm">
-            <div class="project-status">idea</div>
-            <h3>Fluid Simulation</h3>
-            <p>GPU-accelerated fluid dynamics using a 
-              Navier-Stokes solver. Interested in
-              the visual results and the physics.</p>
-            <div class="project-tags">
-              <span>Python</span>
-              <span>Maths</span>
-              <span>Physics Sim</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-entry" data-folder="">
-          <div class="project-card-sm">
-            <div class="project-status">idea</div>
-            <h3>Ray Tracer</h3>
-            <p>A GPU ray tracer built from scratch. 
-              A classic and cool looking project 
-              I want to do properly with path tracing.</p>
-            <div class="project-tags">
-              <span>C++</span>
-              <span>Maths</span>
-              <span>Physics Sim</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
+  <script src="../hero-sim.js"></script>
   <script src="../bg-stars.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-  <style>
-    .project-entry {
-      transition: opacity 0.2s linear;
-    }
-    .project-entry.is-hidden {
-      opacity: 0 !important;
-      pointer-events: none;
-      position: absolute !important;
-      visibility: hidden;
-    }
-    .project-entry.fading-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-  </style>
-
-  <script>
-    const wrap = document.getElementById('projects-wrap')
-    const allProjects = [...document.querySelectorAll('.project-entry')]
-
-    const msnry = new Masonry(wrap, {
-      itemSelector: '.project-entry:not(.is-hidden)',
-      columnWidth: '.projects-wrap-sizer',
-      percentPosition: true,
-      gutter: 20,
-      transitionDuration: '0.2s'
-    })
-
-    // read tags from the card itself
-    function getCardTags(entry) {
-      return [...entry.querySelectorAll('.project-tags span')]
-        .map(s => s.textContent.trim().toLowerCase())
-    }
-
-    function getCardStatus(entry) {
-      const el = entry.querySelector('.project-status')
-      return el ? el.textContent.trim().toLowerCase() : ''
-    }
-
-    // wrap card titles in a title-row so spacing is the same with or without an icon
-    allProjects.forEach(entry => {
-      const card = entry.querySelector('.project-card-lg, .project-card-sm')
-      if (!card) return
-      const h3 = card.querySelector('h3')
-      if (!h3 || (h3.parentNode && h3.parentNode.classList.contains('card-title-row'))) return
-      const wrap = document.createElement('div')
-      wrap.className = 'card-title-row'
-      h3.parentNode.insertBefore(wrap, h3)
-      wrap.appendChild(h3)
-
-      const folder = entry.dataset.folder
-      if (!folder) return
-      const name = folder.split('/').pop()
-      const src = folder + '/' + name + '.png'
-      const img = new Image()
-      img.onload = () => {
-        const icon = document.createElement('img')
-        icon.src = src
-        icon.className = 'card-icon'
-        icon.alt = ''
-        icon.setAttribute('aria-hidden', 'true')
-        wrap.insertBefore(icon, h3)
-        msnry.layout()
-      }
-      img.onerror = () => {}
-      img.src = src
-    })
-    msnry.layout()
-
-    // filter by status element
-    const activeFilters = { status: null }
-    let pendingFilter = null
-    let filterTimer = null
-
-    function computeVisible() {
-      return allProjects.map(entry => {
-        const status = getCardStatus(entry)
-        const statusOk = !activeFilters.status || status === activeFilters.status
-        return { entry, visible: statusOk }
-      })
-    }
-
-    function applyFilters() {
-      clearTimeout(filterTimer)
-
-      const results = computeVisible()
-      const toHide = results.filter(r => !r.visible).map(r => r.entry)
-      const toShow = results.filter(r => r.visible).map(r => r.entry)
-
-      // fade out disappearing cards
-      toHide.forEach(e => {
-        e.classList.remove('is-hidden')
-        e.classList.add('fading-out')
-      })
-      // fade in appearing cards, unhide first so they take space
-      toShow.forEach(e => {
-        if (e.classList.contains('is-hidden')) {
-          e.classList.remove('is-hidden')
-          e.style.opacity = '0'
-        }
-        e.classList.remove('fading-out')
-      })
-
-      // after fade completes, commit hidden state and relayout
-      filterTimer = setTimeout(() => {
-        toHide.forEach(e => {
-          e.classList.remove('fading-out')
-          e.classList.add('is-hidden')
-        })
-        toShow.forEach(e => {
-          e.style.opacity = ''
-        })
-        msnry.options.itemSelector = '.project-entry:not(.is-hidden)'
-        msnry.reloadItems()
-        msnry.layout()
-      }, 180)
-    }
-
-    // compact by default on narrow screens
-    const compactToggle = document.getElementById('compact-toggle')
-    let compact = window.innerWidth < 700
-
-    function setCompact(on) {
-      compact = on
-      wrap.classList.toggle('compact', on)
-      compactToggle.classList.toggle('active', on)
-      requestAnimationFrame(() => { msnry.reloadItems(); msnry.layout() })
-    }
-
-    setCompact(compact)
-
-    compactToggle.addEventListener('click', () => setCompact(!compact))
-
-    let filterCooldown = false
-
-    function bindPills(groupId, filterKey) {
-      document.querySelectorAll(`#${groupId} .filter-pill`).forEach(pill => {
-        pill.addEventListener('click', () => {
-          if (filterCooldown) return
-          filterCooldown = true
-          setTimeout(() => { filterCooldown = false }, 250)
-          const val = pill.dataset.filter
-          if (activeFilters[filterKey] === val) {
-            activeFilters[filterKey] = null
-            pill.classList.remove('active')
-          } else {
-            document.querySelectorAll(`#${groupId} .filter-pill`).forEach(p => p.classList.remove('active'))
-            activeFilters[filterKey] = val
-            pill.classList.add('active')
-          }
-          applyFilters()
-        })
-      })
-    }
-
-    bindPills('filter-status', 'status')
-  </script>
-
-  <site-footer></site-footer>
-  <script src="../components.js"></script>
 
 </body>
 </html>

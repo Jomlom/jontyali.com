@@ -3,64 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Puzzles - Jonty Ali" />
-  <meta property="og:description" content="Jonty Ali's collection of original problem-solving puzzles with hints and solutions, several in the style of technical interview questions." />
-  <meta property="og:url" content="https://jontyali.com/projects/puzzles/" />
-  <link rel="canonical" href="https://jontyali.com/projects/puzzles/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Puzzles - Jonty Ali" />
-  <meta name="twitter:description" content="Jonty Ali's collection of original problem-solving puzzles with hints and solutions, several in the style of technical interview questions." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="Jonty Ali's collection of original problem-solving puzzles with hints and solutions, several in the style of technical interview questions." />
+
+  <!-- search results and browser -->
   <title>Puzzles - Jonty Ali</title>
+  <meta name="description" content="Jonty Ali's puzzles.">
+  <link rel="canonical" href="https://jontyali.com/projects/puzzles/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Puzzles - Jonty Ali">
+  <meta property="og:description" content="Jonty Ali's puzzles.">
+  <meta property="og:url" content="https://jontyali.com/projects/puzzles/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Puzzles - Jonty Ali",
+    "url": "https://jontyali.com/projects/puzzles/",
+    "description": "Jonty Ali's puzzles.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../project.css">
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/projects/">&larr; Projects</a>
+      <div class="panel-head">
+        <h1 class="panel-title"><img src="puzzles.png" alt="">Puzzles</h1>
+        <a class="panel-button" href="/puzzles/" target="_blank" rel="noopener">Try them</a>
+      </div>
+      <p class="panel-lead">A few original problem solving questions/puzzles I've written with hints and solutions, several are technical interview style questions with logical reasoning and or some maths. I have publicised some of these online which you can try, and add new ones occasionally.</p>
 
-  <main class="project-overview">
-    <div class="project-left">
-      <div>
-        <span class="project-tag-featured">featured</span><span class="project-status">live</span>
+      <div class="panel-box">
+        <a class="panel-row compact" href="https://github.com/Jomlom/jontyali.com/tree/main/puzzles" target="_blank" rel="noopener"><span class="label">Source</span><span class="meta">github</span></a>
+        <div class="panel-row compact" data-status="live"><span class="label">Status</span><span class="meta">live</span></div>
       </div>
-      <div class="project-title">
-        <project-icon></project-icon>
-        <h1>Puzzles</h1>
-      </div>
-      <p class="project-desc">
-        A few original problem solving questions/puzzles I've written with hints and
-        solutions, several are technical interview style questions with logical
-        reasoning and or some maths. I have publicised some of these online which
-        you can try, and add new ones occasionally.
-      </p>
-      <a class="project-cta" href="../../puzzles/" target="_blank" rel="noopener">try them</a>
-    </div>
-    <div class="project-right">
-      <project-gallery></project-gallery>
-      <div class="project-info">
-        <span class="info-label">STATUS:</span><span class="info-value">live</span>
-        <span class="info-label">SOURCE:</span><span class="info-value"><a href="https://github.com/Jomlom/jontyali.com/tree/main/puzzles" target="_blank" rel="noopener">github</a></span>
-        <ai-usage level="none" desc="
-        I come up with these questions and
-        solutions myself without AI.
-        "></ai-usage>
+      <div class="ai-note" tabindex="0"><span class="ai-label">No AI usage</span>
+        <span class="ai-pop" role="tooltip"><b>NONE</b>I come up with these questions and solutions myself without AI.</span>
       </div>
     </div>
-  </main>
+    <div class="hero-side">
+      <div class="side-gallery">
+        <a href="gallery/1.png" target="_blank" rel="noopener"><img src="gallery/1.png" alt="Puzzles screenshot 1"></a>
+        <a href="gallery/2.png" target="_blank" rel="noopener"><img src="gallery/2.png" alt="Puzzles screenshot 2"></a>
+      </div>
+    </div>
+  </section>
 
-  <site-footer></site-footer>
-
-<script src="../../bg-stars.js"></script>
-<script src="../../components.js"></script>
+  <script src="../../hero-sim.js"></script>
+  <script src="../../bg-stars.js"></script>
 
 </body>
 </html>

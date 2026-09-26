@@ -3,209 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Writeups - Jonty Ali" />
-  <meta property="og:description" content="Writeups by Jonty Ali on his projects and the things he learns — devlogs, notes, and the occasional blog. Contact: contact@jontyali.com." />
-  <meta property="og:url" content="https://jontyali.com/writeups/" />
-  <link rel="canonical" href="https://jontyali.com/writeups/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Writeups - Jonty Ali" />
-  <meta name="twitter:description" content="Writeups by Jonty Ali on his projects and the things he learns — devlogs, notes, and the occasional blog. Contact: contact@jontyali.com." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="Writeups by Jonty Ali on his projects and the things he learns — devlogs, notes, and the occasional blog. Contact: contact@jontyali.com." />
+
+  <!-- search results and browser -->
   <title>Writeups - Jonty Ali</title>
+  <meta name="description" content="Jonty Ali's writeups.">
+  <link rel="canonical" href="https://jontyali.com/writeups/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Writeups - Jonty Ali">
+  <meta property="og:description" content="Jonty Ali's writeups.">
+  <meta property="og:url" content="https://jontyali.com/writeups/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Writeups - Jonty Ali",
+    "url": "https://jontyali.com/writeups/",
+    "description": "Jonty Ali's writeups.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="writeups.css">
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/">&larr; Jonty Ali</a>
+      <h1 class="panel-title">Writeups</h1>
+      <p class="panel-lead">Longer writings on my projects, things I learn, and whatever I feel like.</p>
 
-  <main class="page-main">
-    <section class="section">
-      <div class="wr-wrap">
-        <p class="wr-desc">Longer writings on my projects, things I learn, and whatever I feel like.</p>
-
-        <div class="wr-tools">
-          <input type="text" class="wr-search" id="wr-search" placeholder="search writeups" aria-label="search writeups">
-          <div class="wr-filters" id="wr-filters"></div>
-          <button type="button" class="wr-sort" id="wr-sort">newest &darr;</button>
-        </div>
-
-        <div class="wr-feed" id="wr-feed"></div>
-        <div class="wr-empty" id="wr-empty" style="display:none"></div>
+      <div class="panel-box panel-scroll">
+        <a class="panel-row" href="eclipse/"><img class="icon" src="eclipse/eclipse.png" alt=""><span class="label">UK's 2026 Solar Eclipse &amp; the Pinhole Effect</span><span class="meta">13 Aug 2026</span></a>
+        <a class="panel-row" href="imperial/"><span class="label">Time Series and Systematic Trading</span><span class="meta">6 Aug 2026</span></a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <site-footer></site-footer>
-
+  <script src="../hero-sim.js"></script>
   <script src="../bg-stars.js"></script>
-  <script src="../components.js"></script>
-  <script>
-    const feed = document.getElementById('wr-feed')
-    const searchEl = document.getElementById('wr-search')
-    const sortBtn = document.getElementById('wr-sort')
-    const emptyEl = document.getElementById('wr-empty')
-    const filterWrap = document.getElementById('wr-filters')
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-
-    let all = []
-    let activeType = null
-    let sortNewest = true
-    let rows = []
-    let sel = -1
-    const excerpts = {}
-
-    const fmtDate = iso => {
-      const [y, m, d] = iso.split('-').map(Number)
-      return d + ' ' + months[m - 1] + ' ' + y
-    }
-
-    // use the writeup's first paragraph as preview
-    function loadExcerpt(slug, el) {
-      if (excerpts[slug]) { el.textContent = excerpts[slug]; return }
-      fetch(slug + '/')
-        .then(r => r.text())
-        .then(html => {
-          const doc = new DOMParser().parseFromString(html, 'text/html')
-          const p = doc.querySelector('.wr-article-lead') || doc.querySelector('.wr-article-body p')
-          if (!p) return
-          let text = p.textContent.trim()
-          if (text.length > 200) text = text.slice(0, 200).replace(/\s+\S*$/, '') + '…'
-          excerpts[slug] = text
-          el.textContent = text
-        })
-        .catch(() => {})
-    }
-
-    // looks for <slug>/<slug>.png as card icon, does nothing if missing
-    function loadCardIcon(slug, rail) {
-      const src = slug + '/' + slug + '.png'
-      const img = new Image()
-      img.onload = () => {
-        const icon = document.createElement('img')
-        icon.src = src
-        icon.className = 'card-icon wr-rail-icon'
-        icon.alt = ''
-        icon.setAttribute('aria-hidden', 'true')
-        rail.insertBefore(icon, rail.firstChild)
-      }
-      img.onerror = () => {}
-      img.src = src
-    }
-
-    function setSel(i) {
-      if (rows[sel]) rows[sel].classList.remove('selected')
-      sel = i
-      if (rows[sel]) rows[sel].classList.add('selected')
-    }
-
-    function render() {
-      const q = searchEl.value.trim().toLowerCase()
-      const list = all.filter(w => {
-        if (activeType && w.type !== activeType) return false
-        if (!q) return true
-        return (w.title + ' ' + w.type + ' ' + w.tags.join(' ')).toLowerCase().includes(q)
-      })
-      list.sort((a, b) => sortNewest ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date))
-
-      feed.innerHTML = ''
-      rows = []
-      sel = -1
-
-      if (!list.length) {
-        emptyEl.style.display = 'block'
-        emptyEl.textContent = all.length ? 'no writeups match' : 'no writeups yet — first one incoming'
-        return
-      }
-      emptyEl.style.display = 'none'
-
-      list.forEach(w => {
-        const href = w.slug + '/'
-        const row = document.createElement('div')
-        row.className = 'wr-row'
-        row.dataset.href = href
-        row.tabIndex = 0
-        row.innerHTML = `
-          <div class="wr-rail">
-            <span class="wr-date">${fmtDate(w.date)}</span>
-            <span class="wr-read">~${w.read} min</span>
-          </div>
-          <div class="wr-content">
-            <div class="wr-title">${w.title}</div>
-            <p class="wr-summary"></p>
-            <div class="wr-tags-row">
-              <div class="wr-tags">
-                <span class="wr-type wr-type-${w.type}">${w.type}</span>
-                ${w.tags.map(t => `<span>${t}</span>`).join('')}
-              </div>
-              ${w.pdf ? `<a class="wr-pdf-mini" href="${w.slug}/${w.slug}.pdf" download>&darr; PDF</a>` : ''}
-            </div>
-          </div>
-          <span class="card-arrow">→</span>
-        `
-        row.addEventListener('mouseenter', () => setSel(rows.indexOf(row)))
-        row.addEventListener('click', e => { if (!e.target.closest('.wr-pdf-mini')) location.href = href })
-        row.addEventListener('keydown', e => {
-          if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('.wr-pdf-mini')) { e.preventDefault(); location.href = href }
-        })
-        feed.appendChild(row)
-        rows.push(row)
-        loadExcerpt(w.slug, row.querySelector('.wr-summary'))
-        loadCardIcon(w.slug, row.querySelector('.wr-rail'))
-      })
-    }
-
-    fetch('entries.json')
-      .then(r => r.json())
-      .then(entries => {
-        all = entries
-        const types = [...new Set(all.map(w => w.type))]
-        filterWrap.innerHTML = types.map(t => `<button type="button" class="wr-pill" data-type="${t}">${t}</button>`).join('')
-        filterWrap.querySelectorAll('.wr-pill').forEach(pill => {
-          pill.addEventListener('click', () => {
-            const t = pill.dataset.type
-            if (activeType === t) {
-              activeType = null
-              pill.classList.remove('active')
-            } else {
-              filterWrap.querySelectorAll('.wr-pill').forEach(p => p.classList.remove('active'))
-              activeType = t
-              pill.classList.add('active')
-            }
-            render()
-          })
-        })
-        render()
-      })
-      .catch(() => {
-        emptyEl.style.display = 'block'
-        emptyEl.textContent = 'could not load writeups'
-      })
-
-    searchEl.addEventListener('input', render)
-
-    sortBtn.addEventListener('click', () => {
-      sortNewest = !sortNewest
-      sortBtn.innerHTML = sortNewest ? 'newest &darr;' : 'oldest &uarr;'
-      render()
-    })
-
-    window.addEventListener('keydown', e => {
-      if (document.activeElement === searchEl) return
-      if (!rows.length) return
-      if (e.key === 'ArrowDown') { e.preventDefault(); setSel((sel + 1) % rows.length) }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); setSel((sel - 1 + rows.length) % rows.length) }
-      else if (e.key === 'Enter' && rows[sel]) { e.preventDefault(); location.href = rows[sel].dataset.href }
-    })
-  </script>
 
 </body>
 </html>

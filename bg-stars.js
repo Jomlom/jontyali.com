@@ -161,4 +161,16 @@
     window.dispatchEvent(new CustomEvent('simPauseToggle', { detail: { paused } }))
   })
 
+  if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+    const rules = document.createElement('script')
+    rules.type = 'speculationrules'
+    rules.textContent = JSON.stringify({
+      prerender: [{
+        where: { and: [{ href_matches: '/*' }, { not: { href_matches: '/puzzles/*' } }] },
+        eagerness: 'moderate'
+      }]
+    })
+    document.head.append(rules)
+  }
+
 })()

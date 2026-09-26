@@ -3,67 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="N-Body Gravity Simulator - Jonty Ali" />
-  <meta property="og:description" content="Jonty Ali's N-Body Gravity Simulator, a real-time simulation of thousands of bodies pulling on each other under Newtonian gravity, running on the GPU." />
-  <meta property="og:url" content="https://jontyali.com/projects/nbody/" />
-  <link rel="canonical" href="https://jontyali.com/projects/nbody/" />
-  <meta property="og:image" content="https://jontyali.com/favicon.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="N-Body Gravity Simulator - Jonty Ali" />
-  <meta name="twitter:description" content="Jonty Ali's N-Body Gravity Simulator, a real-time simulation of thousands of bodies pulling on each other under Newtonian gravity, running on the GPU." />
-  <meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-  <meta name="description" content="Jonty Ali's N-Body Gravity Simulator, a real-time simulation of thousands of bodies pulling on each other under Newtonian gravity, running on the GPU." />
+
+  <!-- search results and browser -->
   <title>N-Body Gravity Simulator - Jonty Ali</title>
+  <meta name="description" content="Jonty Ali's N-Body Gravity Simulator, a real-time simulation of thousands of bodies pulling on each other under Newtonian gravity, running on the GPU.">
+  <link rel="canonical" href="https://jontyali.com/projects/nbody/">
+
+  <!-- link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="N-Body Gravity Simulator - Jonty Ali">
+  <meta property="og:description" content="Jonty Ali's N-Body Gravity Simulator, a real-time simulation of thousands of bodies pulling on each other under Newtonian gravity, running on the GPU.">
+  <meta property="og:url" content="https://jontyali.com/projects/nbody/">
+  <meta property="og:image" content="https://jontyali.com/favicon.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- structured data for search engines and AI -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "N-Body Gravity Simulator - Jonty Ali",
+    "url": "https://jontyali.com/projects/nbody/",
+    "description": "Jonty Ali's N-Body Gravity Simulator, a real-time simulation of thousands of bodies pulling on each other under Newtonian gravity, running on the GPU.",
+    "author": {
+      "@type": "Person",
+      "name": "Jonty Ali",
+      "url": "https://jontyali.com",
+      "email": "mailto:contact@jontyali.com",
+      "jobTitle": "Maths and Physics Student",
+      "description": "Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.",
+      "sameAs": [
+        "https://github.com/Jomlom",
+        "https://modrinth.com/user/Jomlom",
+        "https://www.linkedin.com/in/jonty-ali-722b8926a/",
+        "https://www.instagram.com/joontyy/",
+        "https://ko-fi.com/jontyali"
+      ]
+    }
+  }
+  </script>
+
+  <!-- fonts and styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../project.css">
 </head>
 <body>
 
   <canvas id="bg-stars-canvas"></canvas>
-  <div class="noise"></div>
 
-  <site-nav></site-nav>
-
-  <main class="project-overview">
-    <div class="project-left">
-      <div class="project-status">live</div>
-      <div class="project-title">
-        <project-icon></project-icon>
-        <h1>N-Body Gravity Simulator</h1>
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-panel">
+      <a class="panel-back" href="/projects/">&larr; Projects</a>
+      <div class="panel-head">
+        <h1 class="panel-title"><img src="nbody.png" alt="">N-Body Gravity Simulator</h1>
+        <a class="panel-button" href="https://jomlom.github.io/N-Body-Gravity-Sim" target="_blank" rel="noopener">Try it</a>
       </div>
-      <p class="project-desc">
-        A real-time gravitational simulation of many
-        bodies using Newtonian gravitation.
-        A simple and beautiful visualisation,
-        mainly done to showcase on the front page
-        of this site.
-      </p>
-      <a class="project-cta" href="https://jomlom.github.io/N-Body-Gravity-Sim" target="_blank" rel="noopener">try it</a>
-    </div>
-    <div class="project-right">
-      <project-gallery></project-gallery>
-      <div class="project-info">
-        <span class="info-label">STATUS:</span><span class="info-value">live</span>
-        <span class="info-label">LANGUAGE:</span><span class="info-value">JavaScript</span>
-        <span class="info-label">SOURCE:</span><span class="info-value"><a href="https://github.com/Jomlom/N-Body-Gravity-Sim" target="_blank" rel="noopener">github</a></span>
-        <ai-usage level="high" desc="
-        I have explored the same core logic in my own 
-        older Python project. But this implementation in JavaScript 
-        was heavily assisted by AI, to let me achieve a great web based
-        front page graphic without rewriting old code and learning significant 
-        amounts of JS and WebGL.
-        "></ai-usage>
+      <p class="panel-lead">A real-time gravitational simulation of many bodies using Newtonian gravitation. A simple and beautiful visualisation, mainly done to showcase on the front page of this site.</p>
+
+      <div class="panel-box">
+        <a class="panel-row compact" href="https://github.com/Jomlom/N-Body-Gravity-Sim" target="_blank" rel="noopener"><span class="label">Source</span><span class="meta">github</span></a>
+        <div class="panel-row compact" data-status="live"><span class="label">Status</span><span class="meta">live</span></div>
+        <div class="panel-row compact"><span class="label">Language</span><span class="meta">JavaScript</span></div>
+      </div>
+      <div class="ai-note" tabindex="0"><span class="ai-label">AI usage</span>
+        <span class="ai-pop" role="tooltip"><b>HEAVY</b>I have explored the same core logic in my own older Python project. But this implementation in JavaScript was heavily assisted by AI, to let me achieve a great web based front page graphic without rewriting old code and learning significant amounts of JS and WebGL.</span>
       </div>
     </div>
-  </main>
+    <div class="hero-side">
+      <div class="side-gallery">
+        <a href="gallery/1.png" target="_blank" rel="noopener"><img src="gallery/1.png" alt="N-Body Gravity Simulator screenshot 1"></a>
+        <a href="gallery/2.png" target="_blank" rel="noopener"><img src="gallery/2.png" alt="N-Body Gravity Simulator screenshot 2"></a>
+        <a href="gallery/3.png" target="_blank" rel="noopener"><img src="gallery/3.png" alt="N-Body Gravity Simulator screenshot 3"></a>
+      </div>
+    </div>
+  </section>
 
-  <site-footer></site-footer>
-
-<script src="../../bg-stars.js"></script>
-<script src="../../components.js"></script>
+  <script src="../../hero-sim.js"></script>
+  <script src="../../bg-stars.js"></script>
 
 </body>
 </html>
