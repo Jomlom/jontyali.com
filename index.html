@@ -3,67 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Jonty Ali" />
-<meta property="og:description" content="The personal site of Jonty Ali, a Maths and Physics student at Durham University. His main point of contact is his public email, contact@jontyali.com." />
-<meta property="og:url" content="https://jontyali.com/" />
-<link rel="canonical" href="https://jontyali.com/" />
-<meta property="og:image" content="https://jontyali.com/favicon.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Jonty Ali" />
-<meta name="twitter:description" content="The personal site of Jonty Ali, a Maths and Physics student at Durham University. His main point of contact is his public email, contact@jontyali.com." />
-<meta name="twitter:image" content="https://jontyali.com/favicon.png" />
-<meta name="description" content="The personal site of Jonty Ali, a Maths and Physics student at Durham University. His main point of contact is his public email, contact@jontyali.com." />
-<link rel="me" href="https://github.com/Jomlom" />
-<link rel="me" href="https://www.linkedin.com/in/jonty-ali-722b8926a/" />
-<link rel="me" href="mailto:contact@jontyali.com" />
+
+<!-- search results and browser -->
 <title>Jonty Ali</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<style>
-body{
-  -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
-}
+<meta name="description" content="Jonty Ali is a maths and physics student at Durham who builds simulations, games and mods, writes puzzles and makes art.">
+<link rel="canonical" href="https://jontyali.com/">
 
-.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:row;justify-content:flex-start;overflow:hidden}
+<!-- link previews -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jonty Ali">
+<meta property="og:description" content="Studying maths and physics at Durham, and doing whatever else I find fun: simulations, games, mods, puzzles, art.">
+<meta property="og:url" content="https://jontyali.com/">
+<meta property="og:image" content="https://jontyali.com/favicon.png">
+<meta name="twitter:card" content="summary">
 
-.hero-panel{
-  position:relative;z-index:2;width:50%;min-width:420px;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:5rem 5rem;
-}
+<!-- profiles that are mine -->
+<link rel="me" href="https://github.com/Jomlom">
+<link rel="me" href="https://modrinth.com/user/Jomlom">
+<link rel="me" href="https://www.linkedin.com/in/jonty-ali-722b8926a/">
+<link rel="me" href="https://www.instagram.com/joontyy/">
+<link rel="me" href="https://ko-fi.com/jontyali">
+<link rel="me" href="mailto:contact@jontyali.com">
 
-.hero-panel .hero-name{
-  font-family:var(--font-ui);font-size:clamp(4rem,2vw,2rem);line-height:0.9;color:#ffffff;
-  letter-spacing:0.02em;margin-bottom:1.2rem;opacity:1;animation:none;
-  text-shadow:var(--glow-white);
-  white-space:nowrap;
-}
-.hero-tag{
-  font-family:var(--font-mono);font-size:1.7rem;color:var(--text-muted);
-  margin-bottom:3.4rem;letter-spacing:0.03em;
-}
-
-.hero-menu{list-style:none;position:static;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:0.4rem;padding:0;border:0;background:none;backdrop-filter:none}
-
-.nav-item .jump{display:none;margin-left:auto;padding-left:1.2rem;font-size:0.85em;opacity:0.6}
-
-@media (max-width:900px){
-  body{min-height:100svh}
-  .hero{flex-direction:column;justify-content:flex-end;min-height:100svh}
-  #hero-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:1}
-  .hero-panel{width:100%;min-width:0;padding:3rem 1.5rem 2.5rem;justify-content:flex-end}
-  .hero-panel .hero-name{font-size:clamp(2.8rem,16vw,6.5rem);white-space:nowrap;margin-bottom:0.3rem}
-  .hero-tag{font-size:1.2rem;margin-bottom:1.4rem}
-  .nav-item{width:100%;font-size:2.1rem}
-  .nav-item .num{display:none}
-  .nav-item .jump{display:inline}
-  body:not(.kbd) .nav-item.selected{background:none;color:var(--purple)}
-  body:not(.kbd) .nav-item.cred.selected{background:none;color:var(--red)}
-  body:not(.kbd) .nav-item.selected .arrow{opacity:0;animation:none}
-}
-</style>
+<!-- structured data for search engines and AI -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -82,64 +44,130 @@ body{
   ]
 }
 </script>
+
+<!-- fonts and styles -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body{
+  -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+}
+
+.avatar{
+  width:clamp(9rem,19vh,17rem);height:clamp(9rem,19vh,17rem);margin-bottom:clamp(1rem,2.2vh,2rem);perspective:800px;outline:none;
+}
+.avatar-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;transition:transform 0.6s ease;
+}
+.avatar:hover .avatar-inner,.avatar:focus-visible .avatar-inner{transform:rotateY(180deg)}
+.avatar img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;border-radius:50% !important;
+  border:1px solid var(--purple-border);backface-visibility:hidden;
+}
+.avatar .avatar-front{image-rendering:pixelated}
+.avatar .avatar-back{transform:rotateY(180deg)}
+
+.hero-panel .hero-name{
+  font-family:var(--font-ui);font-size:3rem;line-height:0.9;color:#ffffff;
+  letter-spacing:0.02em;margin-bottom:1.2rem;opacity:1;animation:none;
+  text-shadow:var(--glow-white);
+  white-space:nowrap;
+}
+.hero-name.typing::after{content:'|';margin-left:0.02em}
+.hero-handle{
+  font-size:1.3rem;color:var(--text-dim);margin-bottom:1.4rem;letter-spacing:0.03em;
+}
+.hero-tag{
+  font-family:var(--font-mono);font-size:1.5rem;color:var(--text-muted);
+  margin-bottom:2rem;letter-spacing:0.03em;
+}
+
+.hero-menu{
+  position:static;display:flex;flex-direction:column;align-items:stretch;width:26rem;max-width:100%;padding:0;
+  border:1px solid var(--purple-border);background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);
+}
+.hero-menu a{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:clamp(0.4rem,1.1vh,0.7rem) 1.2rem;border-top:1px solid var(--border);
+  font-size:1.5rem;line-height:1.2;color:var(--text);text-decoration:none;
+}
+.hero-menu a:first-child{border-top:0}
+.hero-menu a::after{content:'→';color:var(--text-dim)}
+.hero-menu a[target="_blank"]::after{content:'↗'}
+.hero-menu a:hover,.hero-menu a:focus-visible{background:var(--purple-glow);color:var(--purple);outline:none}
+.hero-menu a:hover::after,.hero-menu a:focus-visible::after{color:var(--purple)}
+
+.hero-links{
+  display:flex;align-items:center;gap:1.6rem;margin-top:clamp(1.8rem,4.5vh,3.5rem);
+}
+.hero-links span{font-size:1.2rem;color:var(--text-dim);letter-spacing:0.05em}
+.hero-links img{display:block;width:2.4rem;height:2.4rem;opacity:0.85;transition:opacity 0.2s,transform 0.2s}
+.hero-links a:hover img,.hero-links a:focus-visible img{opacity:1;transform:translateY(-2px)}
+
+@media (max-width:900px){
+  .hero-panel .hero-name{font-size:clamp(2.2rem,11vw,4rem);white-space:nowrap;margin-bottom:0.3rem}
+  .hero-tag{font-size:1.2rem;margin-bottom:1.4rem}
+  .avatar{width:11rem;height:11rem;margin-bottom:1.2rem}
+  .hero-menu{width:100%}
+  .hero-links{margin-top:1.5rem}
+}
+</style>
 </head>
 <body>
-<p class="sr-only">Jonty Ali is a Maths and Physics student at Durham University, building physics simulations, game engines, and games. His main point of contact is his public email, contact@jontyali.com. He can also be reached on GitHub at github.com/Jomlom and LinkedIn at linkedin.com/in/jonty-ali-722b8926a.</p>
+
 <canvas id="bg-stars-canvas"></canvas>
 
+<!-- page content -->
 <section class="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-panel">
-    <h1 class="hero-name"><span id="name-text"></span><span id="name-caret" class="name-caret">|</span></h1>
-    <div class="hero-tag">maths &amp; physics, durham</div>
-    <nav class="hero-menu" id="hero-menu">
-      <a class="nav-item cred selected" href="about/"><span class="arrow">&gt;</span><span class="label">About</span><span class="num">1</span><span class="jump">&#8599;</span></a>
-      <a class="nav-item" href="projects/"><span class="arrow">&gt;</span><span class="label">Projects</span><span class="num">2</span><span class="jump">&#8599;</span></a>
-      <a class="nav-item" href="art/"><span class="arrow">&gt;</span><span class="label">Art</span><span class="num">3</span><span class="jump">&#8599;</span></a>
-      <a class="nav-item" href="writeups/"><span class="arrow">&gt;</span><span class="label">Writeups</span><span class="num">4</span><span class="jump">&#8599;</span></a>
-      <a class="nav-item" href="log/"><span class="arrow">&gt;</span><span class="label">Log</span><span class="num">5</span><span class="jump">&#8599;</span></a>
-      <a class="nav-item" href="contact/"><span class="arrow">&gt;</span><span class="label">Contact</span><span class="num">6</span><span class="jump">&#8599;</span></a>
+    <div class="avatar" tabindex="0">
+      <div class="avatar-inner">
+        <img class="avatar-front" src="images/profile-pixel.png" alt="Pixel art galaxy">
+        <img class="avatar-back" src="images/profile-photo.webp" alt="Jonty Ali">
+      </div>
+    </div>
+    <h1 class="hero-name">JONTY ALI</h1>
+    <p class="hero-handle">aka "Jomlom" · he/him</p>
+    <div class="hero-tag">I do lots of stuff! Including maths, physics, programming, games, art and puzzles.</div>
+    <nav class="hero-menu">
+      <a href="about/">About</a>
+      <a href="projects/">Projects</a>
+      <a href="/puzzles/" target="_blank" rel="noopener">Puzzles</a>
+      <a href="art/">Art</a>
+      <a href="writeups/">Writeups</a>
+      <a href="log/">Log</a>
+      <a href="contact/">Contact</a>
     </nav>
+    <div class="hero-links">
+      <span>Find me:</span>
+      <a href="https://github.com/Jomlom" target="_blank" rel="noopener me" title="GitHub"><img src="images/links/github.svg" alt="GitHub"></a>
+      <a href="https://modrinth.com/user/Jomlom" target="_blank" rel="noopener me" title="Modrinth"><img src="images/links/modrinth.svg" alt="Modrinth"></a>
+      <a href="https://www.linkedin.com/in/jonty-ali-722b8926a/" target="_blank" rel="noopener me" title="LinkedIn"><img src="images/links/linkedin.svg" alt="LinkedIn"></a>
+      <a href="https://www.instagram.com/joontyy/" target="_blank" rel="noopener me" title="Instagram"><img src="images/links/instagram.svg" alt="Instagram"></a>
+      <a href="https://ko-fi.com/jontyali" target="_blank" rel="noopener me" title="Ko-fi"><img src="images/links/kofi.svg" alt="Ko-fi"></a>
+    </div>
   </div>
 
 </section>
 
-<script src="../hero-sim.js"></script>
-<script src="../bg-stars.js"></script>
+<!-- type out name on load -->
 <script>
-
-(function(){
-  const target = 'JONTY ALI'
-  const el = document.getElementById('name-text')
-  const caret = document.getElementById('name-caret')
-  let i = 0
-  setTimeout(function step(){
-    if(i <= target.length){
-      el.textContent = target.slice(0, i)
-      i++
-      setTimeout(step, 20)
-    } else {
-      caret.classList.add('gone')
-    }
-  }, 300)
-})();
-
-const items = Array.from(document.querySelectorAll('.nav-item'))
-let sel = 0
-let kbd = !window.matchMedia('(max-width: 900px)').matches
-function setSel(i){ sel=(i+items.length)%items.length; items.forEach((it,idx)=>it.classList.toggle('selected',idx===sel)) }
-items.forEach((it,idx)=>it.addEventListener('mouseenter',()=>{ if(kbd) setSel(idx) }))
-window.addEventListener('keydown',e=>{
-  const k=e.key.toLowerCase()
-  if(!kbd && (k==='arrowdown'||k==='arrowup'||k==='w'||k==='s')){
-    kbd=true; document.body.classList.add('kbd'); setSel(0); e.preventDefault(); return
-  }
-  if(k==='arrowdown'||k==='s'){e.preventDefault();setSel(sel+1)}
-  else if(k==='arrowup'||k==='w'){e.preventDefault();setSel(sel-1)}
-  else if(k==='enter'||k===' '){e.preventDefault();items[sel].click()}
-  else if(k>='1' && k<='9'){const n=parseInt(k,10)-1; if(n<items.length){e.preventDefault();setSel(n);items[n].click()}}
-})
+const heading = document.querySelector('.hero-name')
+const text = heading.textContent
+let i = 0
+heading.classList.add('typing')
+heading.textContent = ''
+setTimeout(function step(){
+  heading.textContent = text.slice(0, ++i)
+  if(i < text.length) setTimeout(step, 20)
+  else heading.classList.remove('typing')
+}, 300)
 </script>
-<script src="../components.js"></script>
+<script src="hero-sim.js"></script>
+<script src="bg-stars.js"></script>
 </body>
 </html>

@@ -103,9 +103,20 @@ nav {
   z-index: 1;
   min-height: 100vh;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.hero-panel {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  min-width: 420px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+  padding: clamp(1.5rem, 4vh, 5rem) 5rem clamp(2rem, 5vh, 4rem);
 }
 
 #hero-canvas {
@@ -116,6 +127,12 @@ nav {
   display: block;
   z-index: 0;
   pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  body { min-height: 100svh; }
+  .hero { flex-direction: column; justify-content: flex-end; min-height: 100svh; }
+  .hero-panel { width: 100%; min-width: 0; padding: 3rem 1.5rem 2.5rem; justify-content: flex-end; }
 }
 
 /* sections */
