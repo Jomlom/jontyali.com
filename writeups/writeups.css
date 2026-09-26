@@ -8,8 +8,6 @@
   border: 1px solid;
 }
 .wr-type-notes { color: #3ed98e; background: rgba(62,217,142,0.1); border-color: rgba(62,217,142,0.32); }
-.wr-type-devlog { color: #58aaff; background: rgba(88,170,255,0.1); border-color: rgba(88,170,255,0.32); }
-.wr-type-blog { color: #b388ff; background: rgba(179,136,255,0.12); border-color: rgba(179,136,255,0.32); }
 
 .wr-date, .wr-read { font-size: 1.1rem; color: var(--text-dim); letter-spacing: 0.04em; }
 .wr-article-top .wr-read::before { content: '·'; margin-right: 0.9rem; }
@@ -62,10 +60,7 @@
 }
 .wr-pdf:hover { background: var(--purple-glow); border-color: rgba(156,112,255,0.4); }
 
-/* display:contents means an empty writeup-icon (no icon found) takes up
-   no space at all — the hero row above then just shows the plain meta bar */
-writeup-icon { display: contents; }
-writeup-icon .card-icon {
+.wr-article-hero .card-icon {
   display: block;
   width: clamp(8rem, 18vw, 14rem);
   height: clamp(8rem, 18vw, 14rem);
@@ -137,108 +132,6 @@ writeup-icon .card-icon {
 .wr-media figcaption a:hover {
   color: var(--text);
 }
-
-/* article content */
-.wr-type-deep { color: var(--purple); background: var(--purple-glow); border-color: var(--purple-border); }
-
-.math {
-  font-size: 1.3rem;
-  color: var(--text);
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-left: 2px solid var(--purple-border);
-  padding: 1rem 1.2rem;
-  margin: 1.6rem 0;
-  overflow-x: auto;
-  line-height: 1.9;
-  letter-spacing: 0.02em;
-}
-.math .note {
-  display: block;
-  color: var(--text-dim);
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  letter-spacing: 0.03em;
-}
-
-.wr-figure { margin: 2rem 0; }
-.wr-figure canvas {
-  width: 100%;
-  display: block;
-  border: 1px solid var(--border);
-  background: var(--bg2);
-}
-.wr-figure figcaption {
-  font-size: 1.1rem;
-  color: var(--text-dim);
-  margin-top: 0.6rem;
-  line-height: 1.45;
-}
-
-.wr-callout {
-  background: var(--bg2);
-  border: 1px solid var(--purple-border);
-  border-left: 3px solid var(--purple);
-  padding: 1.2rem 1.4rem;
-  margin: 2.2rem 0;
-}
-.wr-callout-label {
-  font-size: 1.05rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--purple);
-  margin-bottom: 0.5rem;
-}
-.wr-callout p { margin: 0; color: var(--text); font-size: 1.3rem; line-height: 1.6; }
-.wr-callout.warn { border-color: rgba(255,64,64,0.3); border-left-color: var(--red); }
-.wr-callout.warn .wr-callout-label { color: var(--red); }
-
-.wr-takeaways { margin: 1.5rem 0 0; padding: 0; list-style: none; counter-reset: tk; }
-.wr-takeaways li {
-  position: relative;
-  padding-left: 2.8rem;
-  margin-bottom: 1.1rem;
-  font-size: 1.3rem;
-  line-height: 1.55;
-  color: var(--text);
-}
-.wr-takeaways li::before {
-  counter-increment: tk;
-  content: counter(tk);
-  position: absolute;
-  left: 0;
-  top: 0.1rem;
-  width: 1.9rem;
-  height: 1.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--purple);
-  font-size: 1.15rem;
-  border: 1px solid var(--purple-border);
-}
-
-.wr-deep {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid var(--border);
-  background: var(--bg2);
-  padding: 1.3rem 1.5rem;
-  margin: 2.2rem 0;
-  transition: border-color 0.2s, background 0.2s;
-}
-.wr-deep:hover { border-color: var(--purple-border); background: var(--bg3); }
-.wr-deep-label {
-  font-size: 1.05rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--purple);
-  margin-bottom: 0.45rem;
-}
-.wr-deep-title { font-size: 1.5rem; color: var(--text); line-height: 1.2; margin-bottom: 0.45rem; }
-.wr-deep p { margin: 0; color: var(--text-muted); font-size: 1.2rem; line-height: 1.45; }
-.wr-deep-arrow { color: var(--purple); }
 
 .wr-disclaimer {
   font-size: 1.2rem;
@@ -325,11 +218,9 @@ writeup-icon .card-icon {
 }
 
 @media (max-width: 768px) {
-  .wr-sort { margin-left: 0; }
+
   .wr-pdf { margin-left: 0; width: 100%; justify-content: center; order: 10; }
   .wr-article-title { font-size: 2.3rem; }
   .wr-article { padding-top: 3rem; }
-  .wr-row { grid-template-columns: 1fr; gap: 0.9rem; }
-  .wr-rail { flex-direction: row; align-items: center; gap: 0.9rem; }
-  .wr-content { border-left: none; padding-left: 0; }
+
 }

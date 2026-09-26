@@ -1,9 +1,32 @@
-Jonty Ali
+# Jonty Ali
 
-Jonty Ali is a Maths and Physics student at Durham University. This site, jontyali.com, is his personal website, where he showcases the things he builds and writes about what he is working on. Most of his work sits at the intersection of physics, computer graphics, and games, and much of it is done for the fun of learning something new.
+> Jonty Ali ("Jomlom") studies maths and physics at Durham University and builds simulations, games and mods, writes puzzles and makes art. This is his personal site.
 
-His projects include an N-Body Gravity Simulator, a real-time gravitational simulation of thousands of bodies running on the GPU with WebGL2 and GLSL, which is the same simulation that runs behind the front page of the site. He is teaching himself C++ by building a chess platform and engine, with the goal of creating a bot that plays at around 1600 ELO. He is part of a small indie game development team called Into The Maze, where he and a friend are building a playable demo of a game in Godot. He also writes and maintains a small collection of Minecraft mods in Java, with around 400k downloads of his own and membership of an organisation that has passed 130M total downloads. Other work includes a poker platform with bots, a fluid simulation, and a ray tracer, some live and some still at the idea stage. This website itself is one of his projects too, a plain, hand-built static site with no framework or build step.
+Email: contact@jontyali.com
 
-The site is organised into a few sections. Projects lists his work, from live and in-progress builds to early ideas. Log is an occasional feed where he notes when he starts something new, finishes something, or does anything interesting. Credentials, Writeups, and Communications are further sections he is still building out.
+## Pages
 
-He is open to conversations about his work, his studies, or anything interesting. Jonty Ali's main form of contact is his public email, contact@jontyali.com. He can also be reached on GitHub at github.com/Jomlom, and on LinkedIn at linkedin.com/in/jonty-ali-722b8926a.
+- [About](https://jontyali.com/about/): who he is
+- [Projects](https://jontyali.com/projects/): everything he has built, live, in progress and ideas
+- [Puzzles](https://jontyali.com/puzzles/): original logic and problem solving puzzles
+- [Art](https://jontyali.com/art/): pixel art and paintings
+- [Writeups](https://jontyali.com/writeups/): longer notes and articles
+- [Log](https://jontyali.com/log/): occasional updates when something interesting happens
+- [Contact](https://jontyali.com/contact/): email and profiles
+
+## Projects
+
+- [N-Body Gravity Simulator](https://jontyali.com/projects/nbody/): real-time gravity simulation of thousands of bodies on the GPU (WebGL2, GLSL). It runs in the background across this site.
+- [Minecraft Mods](https://jontyali.com/projects/mcmods/): mods written in Java, with around 400k downloads of his own.
+- [Chess Platform and Engine](https://jontyali.com/projects/chess/): a chess platform and engine in C++, aiming for a bot around 1600 ELO.
+- [Into The Maze](https://jontyali.com/projects/itm/): a small indie game team with a friend, building a playable demo in Godot.
+- [Poker Platform and Bots](https://jontyali.com/projects/poker/): an idea-stage poker platform with bots.
+- [This website](https://jontyali.com/projects/site/): hand-built static site with no framework.
+
+## Profiles
+
+- [GitHub](https://github.com/Jomlom)
+- [Modrinth](https://modrinth.com/user/Jomlom)
+- [LinkedIn](https://www.linkedin.com/in/jonty-ali-722b8926a/)
+- [Instagram](https://www.instagram.com/joontyy/)
+- [Ko-fi](https://ko-fi.com/jontyali)

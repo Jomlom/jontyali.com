@@ -28,9 +28,7 @@
 :root {
   --bg: #000000;
   --bg2: #03040a;
-  --bg3: #07080e;
   --purple: #9c70ff;
-  --purple-dim: #6d42d6;
   --red: #ff4040;
   --purple-glow: rgba(156, 112, 255, 0.11);
   --purple-border: rgba(156, 112, 255, 0.21);
@@ -39,7 +37,6 @@
   --text-dim: #7a7891;
   --border: rgba(255,255,255,0.05);
   --font-mono: 'IBM Plex Mono', monospace;
-  --font-display: 'DM Sans', sans-serif;
   --font-ui: 'Chivo Mono', monospace;
   --radius: 0;
   --glow-white: 0 0 2px rgba(255, 255, 255, 0.85), 0 0 5px rgba(255, 255, 255, 0.35);
@@ -85,7 +82,7 @@ main, .hero-panel { view-transition-name: page; }
 }
 
 @supports not (view-transition-name: none) {
-  main, footer { animation: contentIn 0.25s ease; }
+  main { animation: contentIn 0.25s ease; }
 }
 @keyframes contentIn {
   from { opacity: 0; }
@@ -100,30 +97,6 @@ main, .hero-panel { view-transition-name: page; }
   height: 100%;
   z-index: -1;
   pointer-events: none;
-}
-
-/* noise overlay */
-.noise {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0.01;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* nav */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 50;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem 3rem;
-  border-bottom: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(12px);
 }
 
 /* hero */
@@ -207,18 +180,6 @@ a.panel-row:hover::after, a.panel-row:focus-visible::after { color: var(--purple
 }
 
 /* sections */
-.section {
-  position: relative;
-  z-index: 1;
-  padding: 6rem 3rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.section + .section {
-  padding-top: 2rem;
-}
-
 /* icon beside writeup titles */
 .card-icon {
   width: 3.5rem;
@@ -254,108 +215,23 @@ a.panel-row:hover::after, a.panel-row:focus-visible::after { color: var(--purple
 }
 .sim-pause:hover { opacity: 1; color: var(--purple); border-color: var(--purple-border); }
 
-/* footer */
-footer {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 3rem;
-  border-top: 1px solid var(--border);
-  font-size: 1.15rem;
-  color: var(--text-dim);
-  letter-spacing: 0.06em;
-}
-
-/* responsive */
-@media (max-width: 700px) {
-  nav { padding: 1rem 1.5rem; }
-  .crumb-inner { padding: 0 1.5rem; }
-  .section { padding: 4rem 1.5rem; }
-  footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; text-align: center; }
-}
-
 /* typography */
-body, body *:not(.material-icons){
+body, body *{
   font-family:var(--font-mono) !important;
 }
 html{ font-size:12.5px !important; }
 body{ font-size:var(--fz-base) !important; letter-spacing:0.01em; }
 *, *::before, *::after{ border-radius:var(--radius) !important; }
 
-/* nav menu + breadcrumb */
-.nav-item{
-  display:flex;align-items:center;
-  font-family:var(--font-ui);font-size:2.4rem;line-height:1;
-  color:var(--purple);letter-spacing:0.05em;text-transform:uppercase;
-  text-decoration:none;padding:3px 0.6rem;
-  width:42rem;max-width:100%;
-}
-.nav-item.home{color:#fff}
-.nav-item .label{flex:1}
-
-/* hard block highlight */
-.crumb .nav-item:hover,
-.nav-key.selected,
-.nav-key:hover{background:var(--purple);color:#000;text-shadow:none}
-.crumb .nav-item.home:hover,
-.nav-key.home.selected,
-.nav-key.home:hover{background:#fff !important;color:#000 !important}
-
-/* key hint */
-.nav-hint{
-  margin-top:2.8rem;font-family:var(--font-mono);font-size:1rem;
-  color:var(--text-dim);letter-spacing:0.09em;opacity:0;text-transform:uppercase;
-  transition:opacity 0.6s ease;
-}
-.nav-hint.show{opacity:0.7}
-.nav-hint .key{color:var(--text-muted)}
-
-/* breadcrumb */
-.crumb{
-  position:static;display:block;
-  padding:2rem 0 1.25rem;
-  background:none;backdrop-filter:none;
-  border-bottom:1px solid var(--border);
-}
-.crumb-inner{max-width:1400px;margin:0 auto;padding:0 3rem}
-.crumb-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem}
-.crumb-trail{display:flex;align-items:center}
-.crumb-trail .nav-item{width:auto;font-size:2.4rem}
-.crumb-sep{font-size:2.4rem;color:var(--text-dim)}
-.crumb-keys{display:flex;align-items:center;gap:0.35rem;margin-left:auto}
-.nav-key{
-  display:flex;align-items:center;justify-content:center;
-  width:2.5rem;height:2.5rem;
-  font-family:var(--font-ui);font-size:2.3rem;line-height:1;
-  color:var(--purple);text-decoration:none;
-}
-.nav-key.home{color:#fff}
-.crumb-hints{display:flex;flex-wrap:wrap;gap:1.75rem;margin-top:-0.25rem;padding-left:0.6rem}
-.crumb-hints .nav-hint{margin-top:0;font-size:1.4rem;letter-spacing:0.06em;opacity:1}
-.crumb-hints a{text-decoration:none;transition:color 0.15s}
-.crumb-hints a:hover{color:var(--text)}
-.crumb-hints a:hover .key{color:var(--purple)}
-.crumb-mobile{display:none}
-
 @media (max-width: 768px) {
   :root {
     --fz-base: 1.05rem;
-                  }
-  .section { padding: 2rem 1.5rem; }
-  .crumb { padding: 1rem 0 0.8rem; }
-  .crumb-inner { padding: 0 1.5rem; }
-  .crumb-bar, .crumb-hints { display: none; }
-  .crumb-mobile { display: flex; align-items: center; gap: 0.9rem; }
-  .crumb-back { font-family: var(--font-ui); font-size: 1.9rem; line-height: 1; color: var(--purple); text-decoration: none; padding: 0.1rem 0.7rem; border: 1px solid var(--purple-border); }
-  .crumb-back:active { background: var(--purple); color: #000; text-shadow: none; }
-  .crumb-page { font-family: var(--font-ui); font-size: 1.9rem; color: var(--purple); text-transform: uppercase; letter-spacing: 0.04em; }
+  }
 }
 
-body .nav-item, body .nav-item *, body .nav-key, body .key,
-body .crumb-page, body .crumb-back,
-body .hero-name, body .hero-name *, body .sim-pause {
+body .hero-name,
+body .hero-name *,
+body .sim-pause {
   font-family: var(--font-ui) !important;
   font-weight: 900;
 }
