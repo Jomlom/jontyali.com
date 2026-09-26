@@ -89,6 +89,12 @@ main, .hero-panel { view-transition-name: page; }
   to { opacity: 1; }
 }
 
+/* blurred background except landing page */
+#hero-canvas, #bg-stars-canvas {
+  filter: blur(var(--bg-blur, 2px));
+  transform: scale(1.03);
+}
+
 /* background starfield canvas */
 #bg-stars-canvas {
   position: fixed;
@@ -157,8 +163,8 @@ a.panel-row:hover::after, a.panel-row:focus-visible::after { color: var(--purple
 .ai-pop { display: none; position: absolute; left: 0; bottom: calc(100% + 0.6rem); z-index: 5; width: 32rem; max-width: 85vw; padding: 1rem 1.2rem; border: 1px solid var(--purple-border); background: rgba(0, 0, 0, 0.92); color: var(--text-muted); font-size: 1.2rem; line-height: 1.6; }
 .ai-note:hover .ai-pop, .ai-note:focus-visible .ai-pop { display: block; }
 .ai-pop b { display: block; margin-bottom: 0.4rem; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--purple); }
-.panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; margin-bottom: 1.4rem; }
-.panel-head .panel-title { flex: 1 1 20rem; margin-bottom: 0; }
+.panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 1rem 1.5rem; margin-bottom: 1.4rem; }
+.panel-head .panel-title { flex: 0 1 auto; margin-bottom: 0; }
 .panel-button { flex: none; display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1.2rem; font-size: 1.4rem; color: var(--text); text-decoration: none; border: 1px solid var(--purple-border); background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(6px); }
 .panel-button::after { content: '→'; color: var(--text-dim); }
 .panel-button[target="_blank"]::after { content: '↗'; }

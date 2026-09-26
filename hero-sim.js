@@ -97,22 +97,63 @@ void main(){
 const PART_VS=`#version 300 es
 precision highp float;precision highp sampler2D;
 uniform sampler2D u_pos,u_col;uniform mat4 u_mvp;uniform int u_tw,u_th;uniform float u_pxScale;
-out vec3 v_col;out float v_size;
+out vec3 v_col;out float v_size,v_fade;
 void main(){
   int id=gl_VertexID,px=id-(id/u_tw)*u_tw,py=id/u_tw;
   vec2 uv=(vec2(float(px),float(py))+.5)/vec2(float(u_tw),float(u_th));
   vec4 world=texture(u_pos,uv),meta=texture(u_col,uv),clip=u_mvp*vec4(world.xyz,1);
   gl_Position=clip;
   float depth=clamp(1.5/(.5+clip.w*.18),.2,1.5),sz=meta.r;
-  gl_PointSize=clamp(sz*depth*u_pxScale,.4,6.*u_pxScale);
+  float raw=sz*depth*u_pxScale,minPx=2.2*max(u_pxScale,1.);
+  gl_PointSize=clamp(raw,minPx,6.*u_pxScale);
+  v_fade=min(1.,pow(raw/minPx,1.5));
   v_col=meta.gba;v_size=sz;
 }`
 const PART_FS=`#version 300 es
-precision highp float;in vec3 v_col;in float v_size;out vec4 o;
+precision highp float;in vec3 v_col;in float v_size,v_fade;out vec4 o;
 void main(){
   vec2 d=gl_PointCoord-.5;float r=dot(d,d)*4.;if(r>1.)discard;
-  float a=(1.-r)*(1.-r);o=vec4(v_col*a*mix(.6,1.2,clamp(v_size/3.5,0.,1.)),a*.7);
+  float a=(1.-r)*(1.-r)*v_fade;o=vec4(v_col*a*mix(.6,1.2,clamp(v_size/3.5,0.,1.)),a*.7);
 }`
+const TRAIL_SEG=5
+const TRAIL_VS=`#version 300 es
+precision highp float;precision highp sampler2D;
+uniform sampler2D u_pos,u_vel,u_col;uniform mat4 u_mvp;uniform int u_tw,u_th;
+uniform float u_pxScale,u_dt;uniform vec2 u_res;
+out vec3 v_col;out float v_a;
+const int SEG=${TRAIL_SEG};
+vec3 spin(vec3 p,vec3 n,float a){return p*cos(a)+cross(n,p)*sin(a)+n*dot(n,p)*(1.-cos(a));}
+void main(){
+  int per=6*SEG,id=gl_VertexID/per,rem=gl_VertexID-id*per,seg=rem/6,k=rem-seg*6,px=id-(id/u_tw)*u_tw,py=id/u_tw;
+  vec2 uv=(vec2(float(px),float(py))+.5)/vec2(float(u_tw),float(u_th));
+  vec4 world=texture(u_pos,uv),meta=texture(u_col,uv);
+  vec3 p=world.xyz,v=texture(u_vel,uv).xyz;
+  vec3 L=cross(p,v);float r2=dot(p,p),ll=length(L);
+  vec3 axis=ll>1e-9?L/ll:vec3(0.,1.,0.);
+  float w=r2>1e-4?ll/r2*u_dt:0.;
+  vec4 head=u_mvp*vec4(p,1),ahead=u_mvp*vec4(p+v*u_dt,1);
+  vec2 hs=head.xy/head.w*.5*u_res,as2=ahead.xy/ahead.w*.5*u_res;
+  float dl=length(hs-as2);
+  float s=clamp(length(v)*u_dt/.0021,0.,1.3),lenPx=40.*u_pxScale*s*s*s;
+  float frames=min(lenPx/max(dl,1e-3),600.);
+  bool atTail=(k==2||k==3||k==5);
+  int e0=seg+(atTail?1:0);
+  float t0=float(seg)/float(SEG),t1=float(seg+1)/float(SEG),te=float(e0)/float(SEG);
+  vec4 c0=u_mvp*vec4(spin(p,axis,-w*frames*t0),1),c1=u_mvp*vec4(spin(p,axis,-w*frames*t1),1);
+  vec4 ce=atTail?c1:c0;
+  vec2 dir=c1.xy/c1.w*.5*u_res-c0.xy/c0.w*.5*u_res;
+  float dn=length(dir);dir=dn>1e-5?dir/dn:vec2(0.);
+  float side=(k==0||k==2||k==3)?1.:-1.;
+  vec4 pos=ce;pos.xy+=vec2(-dir.y,dir.x)*side*.5*max(u_pxScale,1.)/(.5*u_res)*ce.w;
+  gl_Position=pos;
+  v_col=meta.gba;
+  float depth=clamp(1.5/(.5+head.w*.18),.2,1.5),minPx=2.2*max(u_pxScale,1.);
+  float starB=mix(.6,1.2,clamp(meta.r/3.5,0.,1.))*min(1.,pow(meta.r*depth*u_pxScale/minPx,1.5));
+  v_a=(1.-te)*starB*mix(.2,.55,min(s,1.));
+}`
+const TRAIL_FS=`#version 300 es
+precision highp float;in vec3 v_col;in float v_a;out vec4 o;
+void main(){o=vec4(v_col*v_a,v_a*.7);}`
 const BLUR_FS=`#version 300 es
 precision highp float;in vec2 v_uv;uniform sampler2D u_tex;uniform vec2 u_dir;out vec4 o;
 void main(){
@@ -136,7 +177,7 @@ void main(){
 
 const forceProg=mkProg(QUAD_VS,FORCE_FS), integProg=mkProg(QUAD_VS,INTEG_FS)
 const partProg=mkProg(PART_VS,PART_FS), blurProg=mkProg(QUAD_VS,BLUR_FS)
-const compProg=mkProg(QUAD_VS,COMP_FS)
+const compProg=mkProg(QUAD_VS,COMP_FS), trailProg=mkProg(TRAIL_VS,TRAIL_FS)
 
 const quadVAO=gl.createVertexArray(); gl.bindVertexArray(quadVAO)
 const qBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,qBuf)
@@ -305,7 +346,15 @@ function tick(){
   u1i(partProg,'u_tw',TW);u1i(partProg,'u_th',TH);u1f(partProg,'u_pxScale',px)
   const mobile = window.matchMedia('(max-width: 900px)').matches
   const proj=persp(fov,asp,.01,300),view=mul(mT(0,mobile?1.1:0,mobile?-4.5:-4),mul(mRX(rotX),mRY(rotY)))
-  uM4(partProg,'u_mvp',mul(proj,view));gl.drawArrays(gl.POINTS,0,N);gl.disable(gl.BLEND)
+  const mvp=mul(proj,view)
+  uM4(partProg,'u_mvp',mvp);gl.drawArrays(gl.POINTS,0,N)
+
+  // short streaks behind each body
+  gl.useProgram(trailProg)
+  st(trailProg,'u_pos',0,posTex[ping]);st(trailProg,'u_vel',1,velTex[ping]);st(trailProg,'u_col',2,colTex)
+  uM4(trailProg,'u_mvp',mvp);u1i(trailProg,'u_tw',TW);u1i(trailProg,'u_th',TH)
+  u1f(trailProg,'u_pxScale',px);u1f(trailProg,'u_dt',dt);u2f(trailProg,'u_res',w,h)
+  gl.drawArrays(gl.TRIANGLES,0,N*6*TRAIL_SEG);gl.disable(gl.BLEND)
 
   const B1=2.2,B2=4.4;gl.useProgram(blurProg)
   gl.bindFramebuffer(gl.FRAMEBUFFER,blurFBOA);gl.viewport(0,0,BW,BH);st(blurProg,'u_tex',0,sharpTex);u2f(blurProg,'u_dir',(B1*px)/w,0);dq(2)

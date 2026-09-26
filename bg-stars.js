@@ -8,14 +8,22 @@
   const PAUSE_KEY = 'sim-paused'
   let paused = localStorage.getItem(PAUSE_KEY) === 'true'
 
+  const NSTARS = 1600
+  const REF_PIXELS = 3840 * 2160
+  let active = NSTARS
+
+  // scale star density and blur to screen size
   function resize() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
+    const dpr = window.devicePixelRatio || 1
+    const area = canvas.width * canvas.height * dpr * dpr
+    const scale = Math.min(1, Math.max(0.3, Math.sqrt(area / REF_PIXELS)))
+    active = Math.round(NSTARS * scale)
+    document.documentElement.style.setProperty('--bg-blur', (2 * scale).toFixed(2) + 'px')
   }
   resize()
   window.addEventListener('resize', resize)
-
-  const NSTARS = 2048
   const dirs = new Float32Array(NSTARS * 3)
   const props = new Float32Array(NSTARS * 4) // size, opacity, twinkleSpd, twinklePhase
   const cols = new Float32Array(NSTARS * 3)  // r g b 0..1
@@ -28,7 +36,7 @@
         l = Math.sqrt(x*x + y*y + z*z)
       } while (l > 1 || l < 0.001)
       dirs[s*3] = x/l; dirs[s*3+1] = y/l; dirs[s*3+2] = z/l
-      props[s*4] = 1.5 + Math.random() * 1.4 // size
+      props[s*4] = 1.5 + Math.random() * 1.1 // size
       props[s*4+1] = 0.22 + Math.random() * 0.35 // base opacity
       props[s*4+2] = 0.011 + Math.random() * 0.01 // twinkle speed
       props[s*4+3] = Math.random() * Math.PI * 2 // twinkle phase
@@ -86,7 +94,7 @@
 
     ctx.clearRect(0, 0, w, h)
 
-    for (let s = 0; s < NSTARS; s++) {
+    for (let s = 0; s < active; s++) {
       const dx = dirs[s*3], dy = dirs[s*3+1], dz = dirs[s*3+2]
 
       // apply rotY then rotX
