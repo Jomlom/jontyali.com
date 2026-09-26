@@ -267,7 +267,7 @@ const PAUSE_KEY='sim-paused'
 const heroEl=document.querySelector('.hero')
 let drag=false,lx=0,ly=0
 function inHero(cy){const r=heroEl.getBoundingClientRect();return cy>=r.top&&cy<=r.bottom}
-window.addEventListener('mousedown',e=>{if(paused||!inHero(e.clientY))return;drag=true;lx=e.clientX;ly=e.clientY;e.preventDefault()})
+window.addEventListener('mousedown',e=>{if(paused||!inHero(e.clientY)||e.target.closest('input,textarea,select,button,a,summary,label'))return;drag=true;lx=e.clientX;ly=e.clientY;e.preventDefault()})
 window.addEventListener('mouseup',()=>drag=false)
 window.addEventListener('mousemove',e=>{if(!drag||paused)return;rotY+=(e.clientX-lx)*.005;lx=e.clientX;rotX+=(e.clientY-ly)*.005;ly=e.clientY})
 
