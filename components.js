@@ -1,10 +1,12 @@
 const NAV_MAP = {
   0: { label: 'Home', path: '/' },
-  1: { label: 'Credentials', path: '/credentials/' },
+  1: { label: 'About', path: '/about/' },
   2: { label: 'Projects', path: '/projects/' },
-  3: { label: 'Writeups', path: '/writeups/' },
-  4: { label: 'Log', path: '/log/' },
-  5: { label: 'Communications', path: '/communications/' }
+  3: { label: 'Art', path: '/art/' },
+  4: { label: 'Writeups', path: '/writeups/' },
+  5: { label: 'Log', path: '/log/' },
+  6: { label: 'Contact', path: '/contact/' }
+}
 }
 
 class SiteNav extends HTMLElement {
@@ -75,7 +77,7 @@ class SiteNav extends HTMLElement {
       const k = e.key
       if (k === 'Escape') { e.preventDefault(); go(parentKey, parent) }
       else if (k === '0') { e.preventDefault(); go('0', NAV_MAP[0].path) }
-      else if (k >= '1' && k <= '5') { e.preventDefault(); go(k, NAV_MAP[k].path) }
+      else if (k >= '1' && k <= '6') { e.preventDefault(); go(k, NAV_MAP[k].path) }
     })
   }
 }
