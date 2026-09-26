@@ -15,7 +15,8 @@
 .wr-article-top .wr-read::before { content: '·'; margin-right: 0.9rem; }
 
 /* article pages */
-.wr-article { max-width: 720px; margin: 0 auto; padding: 6rem 1.5rem 5rem; }
+.wr-article { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+.wr-article .panel-back { display: inline-block; }
 
 .wr-article-hero {
   margin-bottom: 2rem;
