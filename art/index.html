@@ -50,17 +50,312 @@
 
   <canvas id="bg-stars-canvas"></canvas>
 
-  <section class="hero">
+  <section class="hero art-hero">
     <canvas id="hero-canvas"></canvas>
-    <div class="hero-panel">
+    <div class="hero-panel art-panel">
       <a class="panel-back" href="/">&larr; Jonty Ali</a>
       <h1 class="panel-title">Art</h1>
-      <p class="panel-lead">this is my art page, work in progress while i revamp my site!</p>
+      <p class="panel-lead">I've tried many mediums, I think I enjoy pixel art and oil painting the most. Here is some stuff I've done, more occasionally.</p>
+    </div>
+    <div class="art-main">
+      <div class="art-grid">
+        <button type="button" class="art-item oil">
+          <img src="../images/art/oil-apple_grisaille.jpg" alt="Oil study of an apple, grisaille">
+          <span class="art-cap">Apple grisaille &middot; <span class="art-medium">oil</span></span>
+          <template class="art-detail">
+            <h2>Apple grisaille</h2>
+            <p class="art-detail-medium"><span class="art-medium">oil</span></p>
+            <p class="art-detail-note">After my raw umber imprimatura apple, I introduced titanium white and did another.</p>
+            <img src="../images/art/oil-apple_grisaille.jpg" alt="Oil study of an apple, grisaille">
+            <div class="art-detail-alts">
+              <img src="../images/art/oil-apple_grisaille_studio.jpg" alt="The same painting on the easel">
+            </div>
+          </template>
+        </button>
+        <button type="button" class="art-item pixel">
+          <img src="../images/art/sprite-purple_galaxy.png" alt="Pixel art galaxy icon">
+          <span class="art-cap">Galaxy &middot; <span class="art-medium">pixel</span></span>
+          <template class="art-detail">
+            <h2>Galaxy</h2>
+            <p class="art-detail-medium"><span class="art-medium">pixel</span></p>
+            <img class="pixel" src="../images/art/sprite-purple_galaxy.png" alt="Pixel art galaxy icon">
+          </template>
+        </button>
+        <button type="button" class="art-item photo">
+          <img src="../images/art/photo-thames_sunset.jpg" alt="Photo of the sun setting on the Thames, reflected on the water">
+          <span class="art-cap">Thames sunset &middot; <span class="art-medium">photo</span></span>
+          <template class="art-detail">
+            <h2>Thames sunset</h2>
+            <p class="art-detail-medium"><span class="art-medium">photo</span></p>
+            <img src="../images/art/photo-thames_sunset.jpg" alt="Photo of the sun setting on the Thames, reflected on the water">
+          </template>
+        </button>
+        <button type="button" class="art-item oil">
+          <img src="../images/art/oil-apple_imprimatura.jpg" alt="Oil study of an apple, imprimatura">
+          <span class="art-cap">Apple imprimatura &middot; <span class="art-medium">oil</span></span>
+          <template class="art-detail">
+            <h2>Apple imprimatura</h2>
+            <p class="art-detail-medium"><span class="art-medium">oil</span></p>
+            <p class="art-detail-note">First painting in a long time, kept it simple with only raw umber.</p>
+            <img src="../images/art/oil-apple_imprimatura.jpg" alt="Oil study of an apple, imprimatura">
+            <div class="art-detail-alts">
+              <img src="../images/art/oil-apple_imprimatura_studio.jpg" alt="The same painting on the easel">
+            </div>
+          </template>
+        </button>
+        <button type="button" class="art-item biro">
+          <img src="../images/art/biro-mushroom.jpg" alt="Biro drawing of a mushroom's underside and gills">
+          <span class="art-cap">Mushroom study &middot; <span class="art-medium">biro</span></span>
+          <template class="art-detail">
+            <h2>Mushroom study</h2>
+            <p class="art-detail-medium"><span class="art-medium">biro</span></p>
+            <p class="art-detail-note">A biro study I did in senior (high) school.</p>
+            <img src="../images/art/biro-mushroom.jpg" alt="Biro drawing of a mushroom's underside and gills">
+          </template>
+        </button>
+        <button type="button" class="art-item pixel">
+          <img src="../projects/chess/chess.png" alt="Pixel art chess pawn">
+          <span class="art-cap">Pawn &middot; <span class="art-medium">pixel</span></span>
+          <template class="art-detail">
+            <h2>Pawn</h2>
+            <p class="art-detail-medium"><span class="art-medium">pixel</span></p>
+            <img class="pixel" src="../projects/chess/chess.png" alt="Pixel art chess pawn">
+          </template>
+        </button>
+        <button type="button" class="art-item photo">
+          <img src="../images/art/photo-burning_sky.jpg" alt="Photo of a burning orange sunset sky above a market square">
+          <span class="art-cap">Burning sky &middot; <span class="art-medium">photo</span></span>
+          <template class="art-detail">
+            <h2>Burning sky</h2>
+            <p class="art-detail-medium"><span class="art-medium">photo</span></p>
+            <img src="../images/art/photo-burning_sky.jpg" alt="Photo of a burning orange sunset sky above a market square">
+          </template>
+        </button>
+        <button type="button" class="art-item oil">
+          <img src="../images/art/oil-first_face_study.jpg" alt="Close-up oil study of my face, first human study">
+          <span class="art-cap">First face study &middot; <span class="art-medium">oil</span></span>
+          <template class="art-detail">
+            <h2>First face study</h2>
+            <p class="art-detail-medium"><span class="art-medium">oil</span></p>
+            <p class="art-detail-note">Learning to paint a face. First time attempting study of a human form, it's pretty hard.</p>
+            <img src="../images/art/oil-first_face_study.jpg" alt="Close-up oil study of my face, first human study">
+            <div class="art-detail-alts">
+              <img src="../images/art/oil-first_face_study_studio.jpg" alt="The same painting on the easel">
+              <p class="art-detail-note">Just used myself for reference, zoomed in and blurred. This way I know exactly what looks off or wrong as I work on it.</p>
+              <img src="../images/art/oil-first_face_study_reference_photo.jpg" alt="The photo of myself used for the reference for this painting">
+              <img src="../images/art/oil-first_face_study_reference_crop.jpg" alt="A blurred, zoomed crop of the photo, used as actual reference">
+            </div>
+          </template>
+        </button>
+        <button type="button" class="art-item pencil">
+          <img src="../images/art/pencil-mushroom.jpg" alt="Pencil drawing of a tall mushroom">
+          <span class="art-cap">Mushroom study &middot; <span class="art-medium">pencil</span></span>
+          <template class="art-detail">
+            <h2>Mushroom study</h2>
+            <p class="art-detail-medium"><span class="art-medium">pencil</span></p>
+            <p class="art-detail-note">A pencil study I did in senior (high) school.</p>
+            <img src="../images/art/pencil-mushroom.jpg" alt="Pencil drawing of a tall mushroom">
+          </template>
+        </button>
+        <button type="button" class="art-item photo">
+          <img src="../images/art/photo-foggy_path.jpg" alt="Photo of a lamplit path through fog at night">
+          <span class="art-cap">Foggy path &middot; <span class="art-medium">photo</span></span>
+          <template class="art-detail">
+            <h2>Foggy path</h2>
+            <p class="art-detail-medium"><span class="art-medium">photo</span></p>
+            <p class="art-detail-note">A cool photo I took while walking home drunk at 1am.</p>
+            <img src="../images/art/photo-foggy_path.jpg" alt="Photo of a lamplit path through fog at night">
+          </template>
+        </button>
+        <button type="button" class="art-item pixel poker-fan">
+          <img src="../images/art/sprite-poker_fan.png" alt="A fanned hand of five playing cards: the back, jack of clubs, queen of diamonds, king of hearts and ace of spades">
+          <span class="art-cap">Playing cards &middot; <span class="art-medium">pixel</span></span>
+          <template class="art-detail">
+            <h2>Playing cards</h2>
+            <p class="art-detail-medium"><span class="art-medium">pixel</span></p>
+            <img src="../images/art/sprite-poker_fan.png" alt="A fanned hand of five playing cards: the back, jack of clubs, queen of diamonds, king of hearts and ace of spades">
+            <p class="art-detail-note">Cut from a full 52 card deck I made.</p>
+            <img class="art-detail-sheet" src="../images/art/sprite-poker_sheet.png" alt="The full sprite sheet">
+          </template>
+        </button>
+        <button type="button" class="art-item coloured-pencil">
+          <img src="../images/art/colour_pencil-mushroom_bottom.jpg" alt="Coloured pencil drawing of a mushroom's undersid">
+          <span class="art-cap">Mushroom underside &middot; <span class="art-medium">coloured pencil</span></span>
+          <template class="art-detail">
+            <h2>Mushroom underside</h2>
+            <p class="art-detail-medium"><span class="art-medium">coloured pencil</span></p>
+            <p class="art-detail-note">A coloured pencil study I did in senior (high) school.</p>
+            <img src="../images/art/colour_pencil-mushroom_bottom.jpg" alt="Coloured pencil drawing of a mushroom's underside">
+          </template>
+        </button>
+        <button type="button" class="art-item pixel bundle">
+          <div class="art-bundle-imgs pair">
+            <img src="../images/art/sprite-github.png" alt="Pixel art GitHub octocat">
+            <img src="../images/art/sprite-durham.png" alt="Pixel art Durham University crest">
+          </div>
+          <span class="art-cap">Octocat &amp; Durham crest &middot; <span class="art-medium">pixel</span></span>
+          <template class="art-detail">
+            <h2>Octocat &amp; Durham crest</h2>
+            <p class="art-detail-medium"><span class="art-medium">pixel</span></p>
+            <div class="art-detail-images pair">
+              <img src="../images/art/sprite-github.png" alt="Pixel art GitHub octocat">
+              <img src="../images/art/sprite-durham.png" alt="Pixel art Durham University crest">
+            </div>
+          </template>
+        </button>
+        <button type="button" class="art-item photo">
+          <img src="../images/art/photo-colourful_crescent_moon.jpg" alt="Photo of a crescent moon in a colourful dusk sky">
+          <span class="art-cap">Colourful crescent moon &middot; <span class="art-medium">photo</span></span>
+          <template class="art-detail">
+            <h2>Colourful crescent moon</h2>
+            <p class="art-detail-medium"><span class="art-medium">photo</span></p>
+            <img src="../images/art/photo-colourful_crescent_moon.jpg" alt="Photo of a crescent moon in a colourful dusk sky">
+          </template>
+        </button>
+        <button type="button" class="art-item oil">
+          <img src="../images/art/oil-mushroom_folds.jpg" alt="Oil painting of a mushroom's gills and folds, close up">
+          <span class="art-cap">Mushroom folds &middot; <span class="art-medium">oil</span></span>
+          <template class="art-detail">
+            <h2>Mushroom folds</h2>
+            <p class="art-detail-medium"><span class="art-medium">oil</span></p>
+            <p class="art-detail-note">An oil painting I did in senior (high) school.</p>
+            <img src="../images/art/oil-mushroom_folds.jpg" alt="Oil painting of a mushroom's gills and folds, close up">
+            <div class="art-detail-alts">
+              <img src="../images/art/oil-mushroom_folds_wip.jpg" alt="The same painting in progress">
+            </div>
+          </template>
+        </button>
+        <button type="button" class="art-item pixel">
+          <img src="../writeups/eclipse/eclipse.png" alt="Pixel art solar eclipse">
+          <span class="art-cap">Eclipse &middot; <span class="art-medium">pixel</span></span>
+          <template class="art-detail">
+            <h2>Eclipse</h2>
+            <p class="art-detail-medium"><span class="art-medium">pixel</span></p>
+            <img class="pixel" src="../writeups/eclipse/eclipse.png" alt="Pixel art solar eclipse">
+          </template>
+        </button>
+        <button type="button" class="art-item pixel bundle">
+          <div class="art-bundle-imgs quad">
+            <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_batteries.png" alt="Pixel art batteries icon"></div>
+            <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_water.png" alt="Pixel art water droplet icon"></div>
+            <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_hourglass.png" alt="Pixel art hourglass icon"></div>
+            <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_dice.png" alt="Pixel art dice icon with a plus-one bonus badge"></div>
+          </div>
+          <span class="art-cap">Puzzle icons &middot; <span class="art-medium">pixel</span></span>
+          <template class="art-detail">
+            <h2>Puzzle icons</h2>
+            <p class="art-detail-medium"><span class="art-medium">pixel</span></p>
+            <div class="art-detail-images quad">
+              <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_batteries.png" alt="Pixel art batteries icon"></div>
+              <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_water.png" alt="Pixel art water droplet icon"></div>
+              <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_hourglass.png" alt="Pixel art hourglass icon"></div>
+              <div class="art-bundle-cell"><img src="../images/art/sprite-puzzles_dice.png" alt="Pixel art dice icon with a plus-one bonus badge"></div>
+            </div>
+            <p class="art-detail-note">Item icons from my puzzles.</p>
+          </template>
+        </button>
+        <button type="button" class="art-item photo">
+          <img src="../images/art/photo-rain_window_sunset.jpg" alt="Photo of a colourful sunset sky through a window during rain">
+          <span class="art-cap">Rain window sunset &middot; <span class="art-medium">photo</span></span>
+          <template class="art-detail">
+            <h2>Rain window sunset</h2>
+            <p class="art-detail-medium"><span class="art-medium">photo</span></p>
+            <img src="../images/art/photo-rain_window_sunset.jpg" alt="Photo of a colourful sunset sky through a window during rain">
+          </template>
+        </button>
+        <button type="button" class="art-item oil">
+          <img src="../images/art/oil-abstract_folds_circle.jpg" alt="Abstract oil painting of coloured folds on a circular canvas">
+          <span class="art-cap">Abstract folds circle &middot; <span class="art-medium">oil</span></span>
+          <template class="art-detail">
+            <h2>Abstract folds circle</h2>
+            <p class="art-detail-medium"><span class="art-medium">oil</span></p>
+            <p class="art-detail-note">A big abstract oil painting I did in senior (high) school. On a large circular wooden board, this took so long...</p>
+            <img src="../images/art/oil-abstract_folds_circle.jpg" alt="Abstract oil painting of coloured folds on a circular canvas">
+            <div class="art-detail-alts">
+            <p class="art-detail-note">A weaved lattice of cermaic used to partially overlay the painting.</p>
+              <img src="../images/art/oil-abstract_folds_circle_install_ceramic.jpg" alt="The ceramic piece from the same exhibition, shown alongside this painting">
+            </div>
+            <p class="art-detail-note">My work on display in Salt's Mill, Saltaire!</p>
+            <div class="art-detail-alts">
+              <img src="../images/art/oil-abstract_folds_circle_install_wide.jpg" alt="This painting and the ceramic piece on display together in a gallery">
+              <img src="../images/art/oil-abstract_folds_circle_install_top.jpg" alt="Looking down at this painting and the ceramic piece on display together">
+            </div>
+          </template>
+        </button>
+        <button type="button" class="art-item photo">
+          <img src="../images/art/photo-night_path.jpg" alt="Photo of a dark path lit by a single streetlamp at night">
+          <span class="art-cap">Night path &middot; <span class="art-medium">photo</span></span>
+          <template class="art-detail">
+            <h2>Night path</h2>
+            <p class="art-detail-medium"><span class="art-medium">photo</span></p>
+            <img src="../images/art/photo-night_path.jpg" alt="Photo of a dark path lit by a single streetlamp at night">
+          </template>
+        </button>
+        <button type="button" class="art-item ceramic">
+          <img src="../images/art/ceramic-knots.jpg" alt="Glazed ceramic sculpture of woven knots">
+          <span class="art-cap">Brittle Weave &middot; <span class="art-medium">ceramic</span></span>
+          <template class="art-detail">
+            <h2>Brittle Weave</h2>
+            <p class="art-detail-medium"><span class="art-medium">ceramic</span></p>
+            <p class="art-detail-note">A weaved lattice of cermaic I made in senior (high) school.</p>
+            <img src="../images/art/ceramic-knots.jpg" alt="Glazed ceramic sculpture of woven knots">
+            <div class="art-detail-alts">
+            <p class="art-detail-note">By layering large amounts of different glazes with different consistencies, letting some float on top of others while in the kiln, I achieved this really cool texture.</p>
+              <img src="../images/art/ceramic-knots_macro.jpg" alt="A close-up of the glaze texture on the same piece">
+            </div>
+            <p class="art-detail-note">My work on display in Salt's Mill, Saltaire!</p>
+            <div class="art-detail-alts">
+              <img src="../images/art/ceramic-knots_install_wood.jpg" alt="This piece on a wooden table at the same exhibition">
+              <img src="../images/art/ceramic-knots_install_trio.jpg" alt="Three woven ceramic pieces on display together at the same exhibition">
+            </div>
+          </template>
+        </button>
+      </div>
     </div>
   </section>
 
+  <div class="art-popup" id="art-popup" hidden>
+    <div class="art-popup-backdrop" data-close></div>
+    <div class="art-popup-box" role="dialog" aria-modal="true">
+      <button type="button" class="art-popup-close" data-close aria-label="Close">&times;</button>
+      <div class="art-popup-content"></div>
+    </div>
+  </div>
+
   <script src="../hero-sim.js"></script>
   <script src="../bg-stars.js"></script>
+  <script>
+    const artPopup = document.getElementById('art-popup')
+    const artPopupContent = artPopup.querySelector('.art-popup-content')
+    const artMediums = ['oil', 'photo', 'biro', 'pencil', 'coloured-pencil', 'ceramic', 'pixel']
+
+    function openArtPopup(item) {
+      const detail = item.querySelector('.art-detail')
+      if (!detail) return
+      artPopupContent.classList.remove(...artMediums)
+      artMediums.forEach(m => { if (item.classList.contains(m)) artPopupContent.classList.add(m) })
+      artPopupContent.innerHTML = ''
+      artPopupContent.appendChild(detail.content.cloneNode(true))
+      artPopup.hidden = false
+    }
+
+    function closeArtPopup() {
+      artPopup.hidden = true
+      artPopupContent.innerHTML = ''
+    }
+
+    document.querySelectorAll('.art-item').forEach(item => {
+      item.addEventListener('click', () => openArtPopup(item))
+    })
+
+    artPopup.addEventListener('click', e => {
+      if (e.target.closest('[data-close]')) closeArtPopup()
+    })
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !artPopup.hidden) closeArtPopup()
+    })
+  </script>
 
 </body>
 </html>
