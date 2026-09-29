@@ -272,14 +272,14 @@ a.panel-row:hover::after, a.panel-row:focus-visible::after { color: var(--purple
 }
 .sim-pause {
   font-family: var(--font-ui);
-  font-size: 2rem;
+  font-size: 1.5rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-dim);
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border);
-  padding: 0.7rem 1.6rem;
-  opacity: 0.6;
+  padding: 0.2rem 0.5rem;
+  opacity: 0.8;
   transition: opacity 0.2s, color 0.2s, border-color 0.2s;
 }
 .sim-pause:hover { opacity: 1; color: var(--purple); border-color: var(--purple-border); }

@@ -147,7 +147,7 @@
     resetBtn.id = 'sim-reset'
     resetBtn.className = 'sim-pause'
     resetBtn.setAttribute('aria-label', 'reset galaxy simulation')
-    resetBtn.textContent = 'reset'
+    resetBtn.textContent = '↻'
     resetBtn.addEventListener('click', () => {
       window.dispatchEvent(new Event('heroResetRequest'))
     })
@@ -158,13 +158,13 @@
   pauseBtn.id = 'sim-pause'
   pauseBtn.className = 'sim-pause'
   pauseBtn.setAttribute('aria-label', 'pause background animation')
-  pauseBtn.textContent = paused ? 'play' : 'pause'
+  pauseBtn.textContent = paused ? '▶' : '⏸'
   controls.appendChild(pauseBtn)
 
   pauseBtn.addEventListener('click', () => {
     paused = !paused
     localStorage.setItem(PAUSE_KEY, paused)
-    pauseBtn.textContent = paused ? 'play' : 'pause'
+    pauseBtn.textContent = paused ? '▶' : '⏸'
     if (!paused) tick()
     window.dispatchEvent(new CustomEvent('simPauseToggle', { detail: { paused } }))
   })
