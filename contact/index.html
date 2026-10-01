@@ -179,9 +179,27 @@
   <script src="../bg-stars.js"></script>
   <script>
     document.querySelector('.contact-copy').addEventListener('click', e => {
-      navigator.clipboard.writeText(e.target.dataset.copy)
-      e.target.textContent = 'copied'
-      setTimeout(() => { e.target.textContent = 'copy' }, 1500)
+      const btn = e.target
+      const text = btn.dataset.copy
+      const showResult = ok => {
+        btn.textContent = ok ? 'copied' : 'failed'
+        setTimeout(() => { btn.textContent = 'copy' }, 1500)
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showResult(true)).catch(() => showResult(false))
+      } 
+      else {
+        const ta = document.createElement('textarea')
+        ta.value = text
+        ta.style.position = 'fixed'
+        ta.style.opacity = '0'
+        document.body.appendChild(ta)
+        ta.select()
+        let ok = false
+        try { ok = document.execCommand('copy') } catch (err) { ok = false }
+        document.body.removeChild(ta)
+        showResult(ok)
+      }
     })
 
     const form = document.getElementById('contact-form')
