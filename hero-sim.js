@@ -3,16 +3,16 @@
 const canvas = document.getElementById('hero-canvas')
 if (!canvas) return
 
-const heroEl2=document.querySelector(".hero"); canvas.width=heroEl2.offsetWidth
-canvas.height=heroEl2.offsetHeight
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
 
 const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: false })
 if (!gl || !gl.getExtension('EXT_color_buffer_float')) return
 gl.getExtension('OES_texture_float_linear')
 
 window.addEventListener("resize", () => {
-  const heroEl2=document.querySelector(".hero"); canvas.width=heroEl2.offsetWidth
-  canvas.height=heroEl2.offsetHeight
+  canvas.width=window.innerWidth
+  canvas.height=window.innerHeight
   resizeTargets()
 })
 

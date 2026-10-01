@@ -55,7 +55,16 @@
     <div class="hero-panel art-panel">
       <a class="panel-back" href="/">&larr; Jonty Ali</a>
       <h1 class="panel-title">Art</h1>
-      <p class="panel-lead">I've tried many mediums, I think I enjoy pixel art and oil painting the most. Here is some stuff I've done, more occasionally.</p>
+      <p class="panel-lead">I've tried many mediums, I think I enjoy pixel art and oil painting the most. Here is some stuff I've done, click for details.</p>
+      <div class="art-filters" id="art-filters">
+        <button type="button" class="art-filter oil" aria-pressed="false">oil</button>
+        <button type="button" class="art-filter photo" aria-pressed="false">photo</button>
+        <button type="button" class="art-filter biro" aria-pressed="false">biro</button>
+        <button type="button" class="art-filter pencil" aria-pressed="false">pencil</button>
+        <button type="button" class="art-filter coloured-pencil" aria-pressed="false">coloured pencil</button>
+        <button type="button" class="art-filter ceramic" aria-pressed="false">ceramic</button>
+        <button type="button" class="art-filter pixel" aria-pressed="false">pixel</button>
+      </div>
     </div>
     <div class="art-main">
       <div class="art-grid">
@@ -354,6 +363,56 @@
 
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape' && !artPopup.hidden) closeArtPopup()
+    })
+
+    const artFilters = document.getElementById('art-filters')
+    const activeFilters = new Set()
+
+    const mediumCounts = Object.fromEntries(artMediums.map(m => [m, document.querySelectorAll('.art-item.' + m).length]))
+    artMediums.slice().sort((a, b) => mediumCounts[b] - mediumCounts[a]).forEach(m => {
+      const btn = artFilters.querySelector('.art-filter.' + m)
+      if (btn) artFilters.appendChild(btn)
+    })
+
+    document.querySelectorAll('.art-item').forEach(item => {
+      item.addEventListener('transitionend', e => {
+        if (e.propertyName !== 'opacity') return
+        if (item.classList.contains('art-item-hidden')) item.classList.add('art-item-gone')
+      })
+    })
+
+    function setItemVisible(item, visible) {
+      if (visible) {
+        if (item.classList.contains('art-item-gone')) {
+          item.classList.remove('art-item-gone')
+          void item.offsetWidth
+        }
+        item.classList.remove('art-item-hidden')
+      } else {
+        item.classList.add('art-item-hidden')
+      }
+    }
+
+    function applyArtFilters() {
+      document.querySelectorAll('.art-item').forEach(item => {
+        const medium = artMediums.find(m => item.classList.contains(m))
+        const visible = activeFilters.size === 0 || activeFilters.has(medium)
+        setItemVisible(item, visible)
+      })
+    }
+
+    artFilters.querySelectorAll('.art-filter').forEach(btn => {
+      const medium = artMediums.find(m => btn.classList.contains(m))
+      btn.addEventListener('click', () => {
+        if (activeFilters.has(medium)) {
+          activeFilters.delete(medium)
+          btn.setAttribute('aria-pressed', 'false')
+        } else {
+          activeFilters.add(medium)
+          btn.setAttribute('aria-pressed', 'true')
+        }
+        applyArtFilters()
+      })
     })
   </script>
 
