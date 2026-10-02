@@ -303,6 +303,10 @@ a.panel-row:hover::after, a.panel-row:focus-visible::after { color: var(--purple
   transition: opacity 0.2s, color 0.2s, border-color 0.2s;
 }
 .sim-pause:hover { opacity: 1; color: var(--purple); border-color: var(--purple-border); }
+.sim-icon { display: block; width: 1.1em; height: 1.1em; background: currentColor; mask: var(--icon) center / contain no-repeat; -webkit-mask: var(--icon) center / contain no-repeat; }
+.sim-icon-pause { --icon: url('images/icons/pause.svg'); }
+.sim-icon-play { --icon: url('images/icons/play.svg'); }
+.sim-icon-reset { --icon: url('images/icons/reset.svg'); }
 
 /* typography */
 body, body *{
